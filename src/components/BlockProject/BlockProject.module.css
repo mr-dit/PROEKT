@@ -1,0 +1,57 @@
+.block_project {
+    width: 356px;
+    height: 220px;
+    position: relative;
+    margin-top: 24px;
+    border: 2px solid #F2F2F2;
+    border-radius: 20px;
+}
+
+
+.block_project:not(:last-child) {
+    margin-right: 26px;
+}
+
+.project_text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 356px;
+    height: 78px;
+    left: 0px;
+    top: 142px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: #F2F2F2;
+}
+
+.project_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    border: none;
+}
+
+.project_icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.project_name {
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #3E3E3E;
+    text-align: start;
+}
+
+.project_desc {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(62, 62, 62, 0.6);
+}

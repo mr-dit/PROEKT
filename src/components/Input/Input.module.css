@@ -1,0 +1,10 @@
+.name_project_row {
+    margin-bottom: 8px;
+}
+
+.input_name {
+    height: 60px;
+    width: 100%;
+    background-image: url('../../icons/Aa.svg');
+
+}

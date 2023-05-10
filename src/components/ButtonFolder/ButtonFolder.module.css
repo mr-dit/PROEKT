@@ -1,0 +1,35 @@
+.row_btn {
+    display: flex;
+    margin-top: 40px;
+}
+
+.row_btn>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 181px;
+    height: 56px;
+    background: #fff;
+    border-radius: 12px;
+    border: none;
+    margin-right: 18px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3E3E3E;
+}
+
+.favorite_img {
+    width: 24px;
+    height: 22px;
+    margin-right: 16px;
+}
+
+.newFolder_img {
+    width: 24px;
+    height: 22px;
+    margin-right: 16px;
+}
+
+.row_btn>button:hover {
+    background: #FCFCFC;
+}

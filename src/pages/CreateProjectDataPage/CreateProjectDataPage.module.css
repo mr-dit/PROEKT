@@ -1,0 +1,40 @@
+.mainPage{
+    flex-grow: 1;
+}
+.frame{
+    display: flex;
+}
+.column1 {
+    display: flex;
+    flex-direction: column;
+    max-width: 475px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #C5C5C5;
+}
+.row1{
+    margin-top: 33px;
+}
+
+.column2 {
+    flex-grow: 1;
+    max-width: 599px;
+    margin-left: 100px;
+}
+
+.image_project {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mainPage > button{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3E3E3E;
+    padding: 15px 15px;
+    margin-top: 30px;
+    background-color: #FCFCFC;
+    border-radius: 20px;
+}

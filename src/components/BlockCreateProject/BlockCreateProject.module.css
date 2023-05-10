@@ -1,0 +1,17 @@
+.block_create_project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #F4F4F4;
+    width: 356px;
+    height: 220px;
+    margin-top: 24px;
+    border-radius: 20px;
+}
+
+.block_create_project>div {
+    font-weight: 600;
+    font-size: 24px;
+    color: #9F9F9F;
+}

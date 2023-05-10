@@ -1,0 +1,76 @@
+.img_project {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_project > div {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 92px;
+    background: #FCFCFC;
+    border-radius: 26px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.inputFile > img{
+    width: 100%;
+}
+
+.blur{
+    filter: blur(0px);
+    transition: filter 0.3s ease-out;
+    z-index: 0;
+}
+.blur:hover{
+    filter: blur(5px);
+}
+
+.upload {
+    width: auto;
+    height: auto;
+    padding: 30px;
+}
+
+.img_project > div > img {
+    margin-left: 32px;
+}
+
+.text {
+    display: flex;
+    min-width: 240px;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 20px;
+    color: #9F9F9F;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+span {
+    font-weight: 500;
+    font-size: 16px;
+    color: #9F9F9F;
+}
+
+/*---------------*/
+
+
+.inputFile {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.inputFile input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+

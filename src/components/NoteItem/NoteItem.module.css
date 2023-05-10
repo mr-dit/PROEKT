@@ -1,0 +1,52 @@
+.note{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin-right: 26px;
+    width: 352px;
+    min-height: 100px;
+    background: #FCFCFC;
+    border-radius: 12px;
+}
+.note>h3{
+    margin: 0;
+    padding: 8px 0 8px 16px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+}
+.note>p{
+    margin: 0;
+    padding: 15px 0 0 15px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+}
+
+.title{
+    box-sizing: border-box;
+    padding: 8px 0 8px 16px;
+    width: 100%;
+}
+.title::placeholder{
+    font-weight: 600;
+    font-size: 24px;
+    color: #9F9F9F;
+}
+
+.text{
+    box-sizing: border-box;
+    padding: 15px 0 0 15px;
+    resize: none;
+    width: 100%;
+    min-height: 50px;
+    border: none;
+    background-color: #FCFCFC;
+
+    font-size: 20px;
+}
+.text::placeholder{
+    font-weight: 500;
+    font-size: 20px;
+    color: #9F9F9F;
+}
