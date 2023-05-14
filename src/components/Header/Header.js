@@ -5,9 +5,8 @@ import reload from "../../icons/reload.svg";
 import styles from "./Header.module.css";
 import question from "../../icons/question.svg";
 
-export const Header = () => {
+export const Header = ({name}) => {
   const [image, setImage] = useState("");
-
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -17,7 +16,7 @@ export const Header = () => {
   return (
     <>
       <div className={styles.header}>
-        <h1>Мои проекты</h1>
+        {name ? <h1>{name}</h1> : <h1>Мои проекты</h1>}
         <input
           className={styles.search}
           type="text"

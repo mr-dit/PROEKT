@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NoteForm.module.css";
+import ProjectService from "../../services/ProjectService";
+import NoteService from "../../services/NoteService";
+import { useParams } from "react-router-dom";
 
 const clearData = {
   title: "",
   text: "",
 };
 
-const NoteForm = ({ setNotes }) => {
+const NoteForm = ({ handleUpdateNotes }) => {
+  const { _id } = useParams();
   const [data, setData] = useState(clearData);
 
   useEffect(() => {
@@ -15,9 +19,13 @@ const NoteForm = ({ setNotes }) => {
     textarea.style.height = textarea.scrollHeight + "px";
   }, [data.text]);
 
-  const createNote = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    setNotes((prev) => [{ id: prev.length + 1, ...data }, ...prev]);
+    const title = document.getElementById("inputTitle").value;
+    const text = document.getElementById("textareaText").value;
+
+    const res = await NoteService.create(_id, title, text);
+    handleUpdateNotes(res.data.note);
     setData(clearData);
   };
 
@@ -26,16 +34,20 @@ const NoteForm = ({ setNotes }) => {
       <form>
         <input
           className={styles.title}
+          id="inputTitle"
+          name="title"
           type="text"
           placeholder="Заголовок"
           value={data.title}
           onChange={(e) =>
             setData((prev) => ({ ...prev, title: e.target.value }))
           }
-          maxLength={22}
+          maxLength={21}
         />
         <textarea
           className={styles.text}
+          id="textareaText"
+          name="text"
           placeholder="Начни писать любой текст..."
           value={data.text}
           onChange={(e) =>
@@ -46,7 +58,7 @@ const NoteForm = ({ setNotes }) => {
           }
           maxLength={300}
         />
-        <button type="submit" onClick={(e) => createNote(e)}>
+        <button type="submit" onClick={(e) => submit(e)}>
           +
         </button>
       </form>

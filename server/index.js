@@ -20,13 +20,13 @@ app.use(cors({
 app.use('/api', router);
 app.use(errorMiddleware);
 
-if (true){
-    app.use('/', express.static(path.join(__dirname, 'clint', 'build')))
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'clint', 'build', 'index.html'))
-    })
-}
+// if (true){
+//     app.use('/', express.static(path.join(__dirname, 'build')))
+//
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+//     })
+// }
 
 const start = async () => {
     try {

@@ -1,6 +1,7 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller');
 const projectController = require('../controllers/project-controller')
+const noteController = require('../controllers/note-controller')
 const router = new Router();
 const {body} = require('express-validator');
 const authMiddleware = require('../middlewares/auth-middleware');
@@ -19,6 +20,11 @@ router.post('/project', projectController.create)
 router.post('/project/:id', projectController.update)
 router.get('/project/:id', projectController.getProjectById)
 router.get('/project', projectController.getProjects)
+
+router.post('/notes/:id', noteController.create)
+router.post('/note', noteController.update)
+router.post('/noteDelete', noteController.delete)
+router.get('/notes/:id', noteController.getNotes)
 
 router.get('/users', authMiddleware, userController.getUsers);
 
