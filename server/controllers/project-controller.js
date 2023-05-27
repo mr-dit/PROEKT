@@ -5,16 +5,26 @@ const tokenService = require("../service/token-service");
 const { verify } = require("jsonwebtoken");
 const projectService = require("../service/project-service");
 
-class projectController {
+class ProjectController {
   async create(req, res, next) {
     try {
       const token = req.headers.authorization.split(" ")[1];
       const decoded = verify(token, process.env.JWT_ACCESS_SECRET);
       const user_id = decoded.id
-      const { name, type, description } = req.body;
+      const { name, type, description} = req.body;
+      const file = req.files
+      const iconPath = file[0].originalname + "-" + new Date().toDateString()
 
-      const userData = await projectService.create(user_id, name, type, description)
+      const userData
+        = await projectService.create(
+        user_id,
+        name,
+        iconPath,
+        type,
+        description
+      )
 
+      // return res.json();
       return res.json(userData);
     } catch (e) {
       next(e);
@@ -77,4 +87,4 @@ class projectController {
   }
 }
 
-module.exports = new projectController();
+module.exports = new ProjectController();

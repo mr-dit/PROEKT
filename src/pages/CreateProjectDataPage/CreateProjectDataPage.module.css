@@ -3,6 +3,7 @@
 }
 .frame{
     display: flex;
+    margin-top: 60px;
 }
 .column1 {
     display: flex;

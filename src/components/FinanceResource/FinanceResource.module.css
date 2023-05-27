@@ -1,0 +1,63 @@
+.frame{
+    display: flex;
+    flex-grow: 1;
+}
+
+.column{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    max-width: 473px;
+}
+.column:first-child{
+    margin-right: 100px;
+}
+
+.column > *{
+    margin-top: 30px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    line-height: 1.1;
+    border-radius: 12px;
+    background: #FCFCFC url('../../icons/arrow.svg') no-repeat 95% 25px;
+    margin-top: 8px;
+}
+
+select:first-child {
+    font-weight: 600;
+    font-size: 20px;
+
+}
+
+.default{
+    color: #9F9F9F;
+}
+.label{
+    font-weight: 600;
+    font-size: 20px;
+    color: #C5C5C5;
+}
+
+.column > button{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3E3E3E;
+    padding: 15px 15px;
+    margin-top: 30px;
+    background-color: #FCFCFC;
+    border-radius: 20px;
+}

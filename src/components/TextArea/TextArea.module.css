@@ -23,17 +23,19 @@
 }
 
 .input_desk {
+    box-sizing: border-box;
     resize: none;
     width: 100%;
+    min-height: 60px;
     max-height: 800px;
     background: #FCFCFC;
     border-radius: 12px;
     border: none;
     padding-left: 15px;
     padding-top: 15px;
+    /*padding-bottom: 8px;*/
     font-weight: 400;
     font-size: 20px;
-    /*line-height: 24px;*/
     color: #000000;
     margin-top: 8px;
 }
@@ -49,4 +51,65 @@
 
 .question {
     margin-left: 7px;
+}
+
+
+
+
+
+
+
+/* Контейнер подсказок */
+.tooltip {
+    margin-left: 7px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Текст подсказки */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 320px;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px 1px gray;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #3E3E3E;
+    /*text-align: center;*/
+    /*padding-left: 10px;*/
+    padding: 5px 15px;
+
+    /* Расположите текст подсказки */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Исчезают в подсказке */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Подсказка стрелка */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    box-shadow: 2px 2px 30px 1px gray;
+    /*background: #FFFFFF;*/
+    border-radius: 15px;
+}
+
+/* Отображение текста подсказки при наведении курсора мыши на контейнер подсказки */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

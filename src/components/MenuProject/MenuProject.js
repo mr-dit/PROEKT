@@ -9,14 +9,15 @@ import scaling from "../../icons/scaling.svg";
 import user from "../../icons/user.svg";
 import settings from "../../icons/settings.svg";
 import styles from "./MenuProject.module.css";
-import { NavLink, redirect } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { store } from '../../index'
 
 export const MenuProject = ({_id}) => {
+  const navigate = useNavigate();
 
   const logout = async () => {
     await store.logout()
-    redirect('/')
+    navigate(`/`)
   }
 
   return (
@@ -40,32 +41,40 @@ export const MenuProject = ({_id}) => {
               Мои идеи
             </button>
           </NavLink>
-          <button className={styles.menu__btn}>
+          <NavLink to={`/projectAuditory/${_id}`}>
+          <button id="auditory" className={styles.menu__btn}>
             <img src={auditory} alt="" />
             Аудитория
           </button>
-          <button className={styles.menu__btn}>
+          </NavLink>
+          <NavLink to={`/projectResource/${_id}`}>
+          <button id="resources" className={styles.menu__btn}>
             <img src={resources} alt="" />
             Ресурсы
           </button>
-          <button className={styles.menu__btn}>
-            <img src={prodvig} alt="" />
-            Продвижение
-          </button>
-          <button className={styles.menu__btn}>
+          </NavLink>
+          <NavLink to={`/projectEducation/${_id}`}>
+          <button id="education" className={styles.menu__btn}>
             <img src={scaling} alt="" />
-            Масштабирование
+            Развитие
           </button>
+          </NavLink>
+          <NavLink to={`/projectPromotion/${_id}`}>
+            <button id="promotion" className={styles.menu__btn}>
+              <img src={prodvig} alt="" />
+              Продвижение
+            </button>
+          </NavLink>
         </div>
         <div className={styles.menu__item}>
           <button className={styles.menu__btn}>
             <img src={user} alt="" />
             Мой профиль
           </button>
-          <button className={styles.menu__btn}>
-            <img src={settings} alt="" />
-            Настройки
-          </button>
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={settings} alt="" />*/}
+          {/*  Настройки*/}
+          {/*</button>*/}
           <button onClick={logout} className={styles.menu__btn}>Выход</button>
         </div>
       </menu>

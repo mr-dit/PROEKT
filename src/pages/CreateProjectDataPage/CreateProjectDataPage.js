@@ -7,11 +7,14 @@ import { Icon } from "../../components/Icon/Icon";
 import { Select } from "../../components/Select/Select";
 import { TextArea } from "../../components/TextArea/TextArea";
 import { Cover } from "../../components/Cover/Cover";
-import { Link, useParams } from 'react-router-dom'
+import { Link, redirect, useParams } from 'react-router-dom'
 import ProjectService from '../../services/ProjectService'
+import Aa from '../../icons/Aa.svg'
+import { useNavigate } from 'react-router-dom';
 // import axios from "axios";
 
 export const CreateProjectDataPage = () => {
+  const navigate = useNavigate();
   // const [project, setProject] = useState([])
   // const { _id } = useParams();
 
@@ -35,14 +38,16 @@ export const CreateProjectDataPage = () => {
     const name = document.getElementsByName('name')[0].value
     const typeProject = document.getElementsByName('typeProject')[0].value
     const description = document.getElementsByName('text')[0].value
-    // const icon = document.querySelector('input[type="file"]').files;
+    const icon = document.getElementById('icon').files[0]
+
     // const icon = document.getElementsByName('icon')[0].files[0]
     // const cover = document.getElementsByName('cover')[0].value
 
-    const res = await ProjectService.create(name, typeProject, description)
-    if (res.status === 200) {
-      alert('Создано!')
-    }
+    const res = await ProjectService.create(name, typeProject, description, icon)
+
+    // if (res.status === 200) {
+    //   return navigate(`/projectDataPage/${res.data._doc._id}`)
+    // }
   }
 
   return (
@@ -53,7 +58,7 @@ export const CreateProjectDataPage = () => {
           <div className={styles.frame}>
             <div className={styles.column1}>
               <div className={styles.row1}>
-                <Input nameProject={''}></Input>
+                <Input nameProject={''} label="Название проекта" image={Aa}></Input>
               </div>
               <div className={styles.row1}>
                 <div className={styles.image_project}>
@@ -67,7 +72,7 @@ export const CreateProjectDataPage = () => {
             </div>
             <div className={styles.column2}>
               <div className={styles.row1}>
-                <TextArea value={''}></TextArea>
+                <TextArea value={''} label={"Описание проекта"}></TextArea>
               </div>
             </div>
           </div>

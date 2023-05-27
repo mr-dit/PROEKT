@@ -34,7 +34,7 @@ const NoteItem = ({ note, handleDeleteNotes }) => {
   return (
     <>
       {note ? (
-        <div key={note._id} className={styles.note}>
+        <div className={styles.note}>
           <form>
             <input
               className={styles.title}
@@ -57,9 +57,6 @@ const NoteItem = ({ note, handleDeleteNotes }) => {
               maxLength={300}
             />
             <div className={styles.rowButton}>
-              {/*<button type="submit" onClick={(e) => handleChange(e)}>*/}
-              {/*  <img src={diskette} alt=""/>*/}
-              {/*</button>*/}
               <button type="submit" onClick={(e) => handleDelete(e)}>
                 <img src={deleteBucket} alt="" />
               </button>

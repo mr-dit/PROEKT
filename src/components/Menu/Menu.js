@@ -8,12 +8,13 @@ import user from "../../icons/user.svg";
 import settings from "../../icons/settings.svg";
 import styles from "./Menu.module.css";
 import { store } from '../../index'
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const Menu = () => {
+  const navigate = useNavigate();
   const logout = async () => {
     await store.logout()
-    redirect('/')
+    navigate(`/`)
   }
 
   return (
@@ -27,28 +28,28 @@ export const Menu = () => {
             <img src={projects} alt="" />
             Мои проекты
           </button>
-          <button className={styles.menu__btn}>
-            <img src={teams} alt="" />
-            Команды
-          </button>
-          <button className={styles.menu__btn}>
-            <img src={analytics} alt="" />
-            Аналитика
-          </button>
-          <button className={styles.menu__btn}>
-            <img src={documentation} alt="" />
-            Документация
-          </button>
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={teams} alt="" />*/}
+          {/*  Команды*/}
+          {/*</button>*/}
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={analytics} alt="" />*/}
+          {/*  Аналитика*/}
+          {/*</button>*/}
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={documentation} alt="" />*/}
+          {/*  Документация*/}
+          {/*</button>*/}
         </div>
         <div className={styles.menu__item}>
           <button className={styles.menu__btn}>
             <img src={user} alt="" />
             Мой профиль
           </button>
-          <button className={styles.menu__btn}>
-            <img src={settings} alt="" />
-            Настройки
-          </button>
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={settings} alt="" />*/}
+          {/*  Настройки*/}
+          {/*</button>*/}
           <button onClick={logout} className={styles.menu__btn}>Выход</button>
         </div>
       </menu>

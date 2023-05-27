@@ -8,10 +8,11 @@ const ApiError = require("../exceptions/api-error");
 const ProjectModel = require("../models/projects-model");
 
 class ProjectService {
-  async create(user_id, name, type, description) {
+  async create(user_id, name, iconPath, type, description) {
     const project = await ProjectModel.create({
       user_id: user_id,
       name: name,
+      iconPath: iconPath,
       type: type,
       description: description,
     });

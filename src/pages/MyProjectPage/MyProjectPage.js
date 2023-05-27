@@ -1,15 +1,9 @@
 // import React, { useContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Menu } from '../../components/Menu/Menu'
 import { Header } from '../../components/Header/Header'
 import { BlockCreateProject } from '../../components/BlockCreateProject/BlockCreateProject'
-import { ButtonFolder } from '../../components/ButtonFolder/ButtonFolder'
 import styles from './MyProjectPage.module.css'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { API_URL } from '../../http'
-import { store } from '../../index'
-import { Link } from 'react-router-dom'
 import ProjectService from '../../services/ProjectService'
 import { BlockProject } from '../../components/BlockProject/BlockProject'
 
@@ -29,7 +23,6 @@ export const MyProjectPage = () => {
 			<Menu></Menu>
 			<div className={styles.mainPage}>
 				<Header></Header>
-				<ButtonFolder></ButtonFolder>
 				<div className={styles.project_row}>
 				{projects.map(project => (
 					<BlockProject key={project._id} _id={project._id} name={project.name}></BlockProject>

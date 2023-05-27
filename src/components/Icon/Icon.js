@@ -17,14 +17,16 @@ export const Icon = ({img}) => {
         <div className={styles.icon_project}>
           Аватарка
             <div>
+              <form action="/upload" method="post" encType="multipart/form-data">
               <label className={styles.inputFile}>
-                <input type="file" name="icon" onChange={handleImageChange} />
+                <input type="file" name="icon" id="icon" onChange={handleImageChange} />
                 {image ? (
                     <img className={styles.blur} src={image} alt="uploader" />
                 ) : (
                     <img src={upload} alt="uploader" className={styles.upload}/>
                 )}
               </label>
+              </form>
             </div>
         </div>
       </div>

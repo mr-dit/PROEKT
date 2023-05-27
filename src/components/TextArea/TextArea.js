@@ -3,12 +3,10 @@ import question from "../../icons/question.svg";
 import cloud from "../../icons/cloud.svg";
 import styles from "./TextArea.module.css";
 
-export const TextArea = ({ value }) => {
-  const [valueFromServer, setValueFromServer] = useState("");
+export const TextArea = ({ value="", label, tooltip }) => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    setValueFromServer(value);
     setText(value);
   }, []);
 
@@ -25,13 +23,16 @@ export const TextArea = ({ value }) => {
       <div className={styles.desc_project_block}>
         <div className={styles.desc_project_row}>
           <h6>
-            Описание проекта
-            <button className={styles.question}>
-              <img src={question} alt="" />
-            </button>
+            {label}
+            {/*<button className={styles.question}>*/}
+            {/*  <img src={question} alt="" />*/}
+            {/*</button>*/}
+            <div className={styles.tooltip}><img src={question} alt="" />
+              <span className={styles.tooltiptext}>{tooltip}</span>
+            </div>
           </h6>
           <span className={styles.span}>
-            <img src={cloud} alt="" /> {characterCount} / 1048
+            {characterCount} / 1048
           </span>
         </div>
         <textarea

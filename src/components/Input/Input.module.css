@@ -1,10 +1,22 @@
 .name_project_row {
+    position: relative;
     margin-bottom: 8px;
 }
 
+.blockInput{
+    position: relative;
+}
+.blockInput > .inputIcon{
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    height: 24px;
+    width: 24px;
+}
+
 .input_name {
+    min-width: 100px;
+    box-sizing: border-box;
     height: 60px;
     width: 100%;
-    background-image: url('../../icons/Aa.svg');
-
 }

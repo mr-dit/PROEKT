@@ -26,7 +26,7 @@ select::-ms-expand {
     cursor: pointer;
     line-height: 1.1;
     border-radius: 12px;
-    background: #F4F4F4 url('../../icons/arrow.svg') no-repeat 95% 25px;
+    background: #FCFCFC url('../../icons/arrow.svg') no-repeat 95% 25px;
     margin-top: 8px;
 }
 

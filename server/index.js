@@ -5,14 +5,18 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 const router = require('./router/index')
 const errorMiddleware = require('./middlewares/error-middleware');
+const multer  = require("multer");
 const path = require('path')
-
+const bodyParser = require('body-parser')
+const upload = multer()
 
 const PORT = process.env.PORT || 5000;
 const app = express()
 
 app.use(express.json());
 app.use(cookieParser());
+// app.use(bodyParser.json());
+
 app.use(cors({
     credentials: true,
     origin: process.env.CLIENT_URL

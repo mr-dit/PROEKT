@@ -9,6 +9,7 @@ import { TextArea } from "../../components/TextArea/TextArea";
 import { Cover } from "../../components/Cover/Cover";
 import { Link, useParams } from "react-router-dom";
 import ProjectService from "../../services/ProjectService";
+import Aa from '../../icons/Aa.svg'
 // import axios from "axios";
 
 export const UpdateProjectDataPage = () => {
@@ -64,7 +65,7 @@ export const UpdateProjectDataPage = () => {
           <div  className={styles.frame}>
             <div className={styles.column1}>
               <div className={styles.row1}>
-                <Input nameProject={project.name}></Input>
+                <Input text={project.name} label="Название проекта" image={Aa}></Input>
               </div>
               <div className={styles.row1}>
                 <div className={styles.image_project}>
@@ -78,7 +79,7 @@ export const UpdateProjectDataPage = () => {
             </div>
             <div className={styles.column2}>
               <div className={styles.row1}>
-                <TextArea value={project.description}></TextArea>
+                <TextArea value={project.description} label={"Описание проекта"}></TextArea>
               </div>
             </div>
           </div>

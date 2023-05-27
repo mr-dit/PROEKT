@@ -15,7 +15,6 @@ export const ProjectMyIdeasPage = () => {
     async function fetchData() {
       const res = await NoteService.getNotes(_id);
       setNotes(res.data);
-      console.log(res.data);
     }
 
     fetchData();
@@ -42,7 +41,7 @@ export const ProjectMyIdeasPage = () => {
         <Header></Header>
         <div className={styles.frame}>
           <div>
-            Ваши заметки
+            Запиши все идеи, которые возникли в процессе работы
             <div className={styles.table}>
               {notes ? (
                 notes.map((note) => (
