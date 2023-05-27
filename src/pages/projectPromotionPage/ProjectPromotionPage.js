@@ -15,7 +15,6 @@ const options = [
   },
   { value: "Таргетированная реклама", label: "Таргетированная реклама" },
   { value: "Наружная реклама", label: "Наружная реклама" },
-  { value: "Наружная реклама", label: "Наружная реклама" },
 ];
 
 export const ProjectPromotionPage = () => {
@@ -30,8 +29,10 @@ export const ProjectPromotionPage = () => {
   useEffect(() => {
     async function fetchData() {
       const res = await PromotionService.getPromotionById(_id);
-      setPromotion(res.data);
-      setSelectedOptions(JSON.parse(res.data[0].promotions));
+      if (res.data && res.data.length > 0 && res.data[0].promotions) {
+        setPromotion(res.data);
+        setSelectedOptions(JSON.parse(res.data[0].promotions));
+      }
     }
 
     fetchData();

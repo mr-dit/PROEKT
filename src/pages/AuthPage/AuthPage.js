@@ -39,15 +39,10 @@ const AuthPage = () => {
         >
           Войти
         </button>
-        <p className={styles.or}>Войти с помощью</p>
-        <div className={styles.icons}>
-          <a href="https://vk.com/feed" target="_blank">
-            <i> </i>
-          </a>
-          <a href="https://web.telegram.org/k/" target="_blank">
-            <i></i>
-          </a>
-        </div>
+        <button className={styles.loginBtn} onClick={() => store.registration(email, password)}>
+             Регистрация
+        </button>
+        {/*<p className={styles.or}>Войти с помощью</p>*/}
 
         {/*<div className={styles.signup}>*/}
         {/*  Нет аккаунта? <a href="#">Зарегестрируйтесь здесь</a>*/}

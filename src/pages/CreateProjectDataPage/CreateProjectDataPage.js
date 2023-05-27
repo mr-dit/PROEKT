@@ -34,20 +34,20 @@ export const CreateProjectDataPage = () => {
     button.style.color = "#8700DA"
   }, [])
 
-  const submit = async () =>{
+  const submit = async () => {
     const name = document.getElementsByName('name')[0].value
     const typeProject = document.getElementsByName('typeProject')[0].value
     const description = document.getElementsByName('text')[0].value
-    const icon = document.getElementById('icon').files[0]
+    // const icon = document.getElementById('icon').files[0]
 
     // const icon = document.getElementsByName('icon')[0].files[0]
     // const cover = document.getElementsByName('cover')[0].value
+    const res = await ProjectService.create(name, typeProject, description)
+    // const res = await ProjectService.create(name, typeProject, description, icon)
 
-    const res = await ProjectService.create(name, typeProject, description, icon)
-
-    // if (res.status === 200) {
-    //   return navigate(`/projectDataPage/${res.data._doc._id}`)
-    // }
+    if (res.status === 200) {
+      return navigate(`/projectDataPage/${res.data._doc._id}`)
+    }
   }
 
   return (

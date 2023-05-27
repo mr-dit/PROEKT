@@ -66,7 +66,7 @@ export const ProjectAuditoryPage = () => {
 							</div>
 							<div className={styles.column2}>
 								<div className={styles.row1}>
-									<TextArea value={auditory.description} label={"Портрет ЦА"}></TextArea>
+									<TextArea value={auditory.description} label={"Портрет ЦА"} tooltip={"Опиши свою целевую аудиторию, упоминая пол, возраст, интересы и уровень дохода"}></TextArea>
 								</div>
 							</div>
 						</div>
@@ -84,7 +84,7 @@ export const ProjectAuditoryPage = () => {
 						</div>
 						<div className={styles.column2}>
 							<div className={styles.row1}>
-								<TextArea value={""} label={"Портрет ЦА"}></TextArea>
+								<TextArea value={""} label={"Портрет ЦА"} tooltip={"Опиши свою целевую аудиторию, упоминая пол, возраст, интересы и уровень дохода"}></TextArea>
 							</div>
 						</div>
 					</div>

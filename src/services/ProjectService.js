@@ -1,12 +1,11 @@
 import api from "../http/index";
 // import { AxiosResponse } from "axios";
-// import {AuthResponse} from "../models/response/AuthResponse";
 
 export default class ProjectService {
 	static async create(name, type, description, icon) {
 		let data = new FormData();
 
-		data.append('file', icon, icon.name)
+		// data.append('file', icon)
 		data.append('name', name)
 		data.append('type', type)
 		data.append('description', description)

@@ -12,8 +12,9 @@ class ProjectController {
       const decoded = verify(token, process.env.JWT_ACCESS_SECRET);
       const user_id = decoded.id
       const { name, type, description} = req.body;
-      const file = req.files
-      const iconPath = file[0].originalname + "-" + new Date().toDateString()
+      // const file = req.files
+      // const iconPath = file[0].originalname + "-" + new Date().toDateString()
+      const iconPath = ""
 
       const userData
         = await projectService.create(
