@@ -42,7 +42,7 @@ class ProjectController {
 
       const { name, type, description} = req.body;
       const files = req.files
-
+      console.log(req.body)
       // const iconPath =  req.files['file'][0].filename
       // const coverPath = req.files['cover'][0].filename
 

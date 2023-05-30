@@ -63,6 +63,17 @@ class ProjectService {
           },
         };
         return ProjectModel.updateOne(oldProject, updateDocument);
+      } else {
+        const updateDocument = {
+          $set: {
+            name: name,
+            iconPath: oldProject.iconPath,
+            coverPath: oldProject.coverPath,
+            type: type,
+            description: description,
+          },
+        };
+        return ProjectModel.updateOne(oldProject, updateDocument);
       }
     }
   }
