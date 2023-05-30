@@ -75,7 +75,7 @@ export const FinanceResource = ({ _id }) => {
                 label="Переменные затраты"
                 tooltip={"Опиши траты, которые будут варьироваться "}
               ></TextArea>
-              <button onClick={submit}>Сохранить</button>
+              <button onClick={submit} className="save_btn">Сохранить</button>
             </div>
             <div className={styles.column}>
               <TextArea
@@ -113,7 +113,7 @@ export const FinanceResource = ({ _id }) => {
             </div>
             <TextArea value={""} label="Постоянные затраты" tooltip={"Какие траты будут производиться каждый месяц ? "}></TextArea>
             <TextArea value={""} label="Переменные затраты" tooltip={"Опиши траты, которые будут варьироваться "}></TextArea>
-            <button onClick={submit}>Сохранить</button>
+            <button onClick={submit} className="save_btn">Сохранить</button>
           </div>
           <div className={styles.column}>
             <TextArea value={""} label="Непредвиденные расходы" tooltip={"Предположи, какие траты могут возникнуть по непредвиденным обстоятельствам"}></TextArea>

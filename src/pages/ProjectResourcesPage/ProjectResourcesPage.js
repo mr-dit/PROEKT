@@ -12,11 +12,25 @@ import activeWork from '../../icons/blueWork.svg'
 import activeClock from "../../icons/activeClock.svg"
 import { WorkResource } from '../../components/WorkResource/WorkResource'
 import { TimeResource } from '../../components/TimeResource/TimeResource'
+import AuditoryService from '../../services/AuditoryService'
+import ProjectService from '../../services/ProjectService'
 
 export const ProjectResourcesPage = () => {
   const { _id } = useParams();
   const [activeComponent, setActiveComponent] = useState("component1");
 	const [activeImage, setActiveImage] = useState('money');
+  const [nameProject, setNameProject] = useState('')
+
+  useEffect(() => {
+    async function fetchData() {
+      const resp = await ProjectService.getProjectById(_id);
+      const name = resp.data.data.name
+      setNameProject(name)
+    }
+
+    fetchData();
+  }, [_id]);
+
 
   const handleButtonClick = (component , image) => {
     setActiveComponent(component);
@@ -38,7 +52,7 @@ export const ProjectResourcesPage = () => {
       <MenuProject _id={_id}></MenuProject>
       <div className={styles.mainPage}>
           <div>
-            <Header></Header>
+            <Header name={nameProject}></Header>
             <div className={styles.frame}>
               <div className={styles.rowButton}>
                 <button

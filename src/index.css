@@ -95,3 +95,7 @@ input{
   font-size: 24px;
   color: #000000;
 }
+
+.save_btn:hover{
+background-color: #F4F4F4;
+}

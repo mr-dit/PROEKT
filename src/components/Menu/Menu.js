@@ -5,6 +5,7 @@ import teams from "../../icons/teams.svg";
 import analytics from "../../icons/analytics.svg";
 import documentation from "../../icons/documentation.svg";
 import user from "../../icons/user.svg";
+import exit from "../../icons/exit.png"
 import settings from "../../icons/settings.svg";
 import styles from "./Menu.module.css";
 import { store } from '../../index'
@@ -50,7 +51,10 @@ export const Menu = () => {
           {/*  <img src={settings} alt="" />*/}
           {/*  Настройки*/}
           {/*</button>*/}
-          <button onClick={logout} className={styles.menu__btn}>Выход</button>
+          <button onClick={logout} className={styles.menu__btn}>
+            <img src={exit} alt="" className={styles.icon} />
+            Выход
+          </button>
         </div>
       </menu>
     </>

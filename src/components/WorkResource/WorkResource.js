@@ -45,7 +45,7 @@ export const WorkResource = ({_id}) => {
 					<TextArea value={wd.members} label={"Список участников"} tooltip={"Перечисли специалистов проекта"}></TextArea>
 					<TextArea value={wd.roles} label={"Роли участников команды"} tooltip={"Какие роли в команде они будут занимать?"}></TextArea>
 					<TextArea value={wd.functions} label={"Функции участников команды"} tooltip={"Опиши ключевые функции каждого участника"}></TextArea>
-					<button onClick={submit}>Сохранить</button>
+					<button onClick={submit} className="save_btn">Сохранить</button>
 				</div>
 				<div className={styles.column}>
 					<TextArea value={wd.missingSkills} label={"Недостающие навыки"} tooltip={"Пропиши навыки, которых не хватает в команде для реализации проекта "}></TextArea>
@@ -58,7 +58,7 @@ export const WorkResource = ({_id}) => {
 						<TextArea value={""} label={"Список участников"} tooltip={"Перечисли специалистов проекта"}></TextArea>
 						<TextArea value={""} label={"Роли участников команды"} tooltip={"Какие роли в команде они будут занимать?"}></TextArea>
 						<TextArea value={""} label={"Функции участников команды"} tooltip={"Опиши ключевые функции каждого участника"}></TextArea>
-						<button onClick={submit}>Сохранить</button>
+						<button onClick={submit} className="save_btn">Сохранить</button>
 					</div>
 					<div className={styles.column}>
 						<TextArea value={""} label={"Недостающие навыки"} tooltip={"Пропиши навыки, которых не хватает в команде для реализации проекта "}></TextArea>

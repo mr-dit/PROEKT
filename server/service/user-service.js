@@ -5,6 +5,7 @@ const uuid = require('uuid');
 const tokenService = require('./token-service');
 const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/api-error');
+const ProjectModel = require('../models/projects-model')
 
 class UserService {
     async registration(email, password) {
@@ -75,6 +76,26 @@ class UserService {
     async getAllUsers() {
         const users = await UserModel.find();
         return users;
+    }
+
+    async setAvatar(file, user_id) {
+        const user = await UserModel.findById(user_id);
+
+        if (user && file){
+            console.log(file.filename)
+            const updateDocument = {
+                $set: {
+                    email: user.email,
+                    password: user.password,
+                    avatarPath: file.filename,
+                },
+            };
+            return UserModel.updateOne(user, updateDocument);
+        }
+    }
+
+    async getAvatar(user_id) {
+        return UserModel.findById(user_id)
     }
 }
 

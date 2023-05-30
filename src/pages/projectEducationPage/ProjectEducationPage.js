@@ -5,15 +5,21 @@ import styles from "./ProjectEducationPage.module.css";
 import { TextArea } from "../../components/TextArea/TextArea";
 import { Link, useParams } from "react-router-dom";
 import EducationService from "../../services/EducationService";
+import ProjectService from '../../services/ProjectService'
 
 export const ProjectEducationPage = () => {
   const [education, setEducation] = useState([]);
   const { _id } = useParams();
+  const [nameProject, setNameProject] = useState('')
 
   useEffect(() => {
     async function fetchData() {
       const res = await EducationService.getEducationById(_id);
       await setEducation(res.data);
+
+      const resp = await ProjectService.getProjectById(_id);
+      const name = resp.data.data.name
+      setNameProject(name)
     }
 
     fetchData();
@@ -44,7 +50,7 @@ export const ProjectEducationPage = () => {
         {education.length !== 0 ? (
           education.map((ed) => (
             <div key={ed._id}>
-              <Header></Header>
+              <Header name={nameProject}></Header>
               <div className={styles.frame}>
                 <div className={styles.column1}>
                   <div className={styles.row1}>
@@ -76,7 +82,7 @@ export const ProjectEducationPage = () => {
           ))
         ) : (
           <div>
-            <Header></Header>
+            <Header name={nameProject}></Header>
             <div className={styles.frame}>
               <div className={styles.column1}>
                 <div className={styles.row1}>
@@ -94,7 +100,7 @@ export const ProjectEducationPage = () => {
             </div>
           </div>
         )}
-        <button onClick={submit}>Сохранить</button>
+        <button onClick={submit} className="save_btn">Сохранить</button>
       </div>
     </>
   );

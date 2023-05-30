@@ -42,7 +42,7 @@ export const TimeResource = ({_id}) => {
 				<div className={styles.column}>
 					<TextArea value={td.list} label={"Список задач"} tooltip={"Напиши план работы на время реализации проекта "}></TextArea>
 					<TextArea value={td.time} label={"Время реализации"} tooltip={"Сколько займет каждый этап? Совет: ставь дедлайны, так твой проект быстрее реализуется"}></TextArea>
-					<button onClick={submit}>Сохранить</button>
+					<button onClick={submit} className="save_btn">Сохранить</button>
 				</div>
 				<div className={styles.column}>
 					<TextArea value={td.events} label={"Мероприятия"} tooltip={"Какие мероприятия, связанные с проектом ты планируешь? Обозначь даты "}></TextArea>
@@ -54,7 +54,7 @@ export const TimeResource = ({_id}) => {
 					<div className={styles.column}>
 						<TextArea label={"Список задач"} tooltip={"Напиши план работы на время реализации проекта "}></TextArea>
 						<TextArea label={"Время реализации"} tooltip={"Сколько займет каждый этап? Совет: ставь дедлайны, так твой проект быстрее реализуется"}></TextArea>
-						<button onClick={submit}>Сохранить</button>
+						<button onClick={submit} className="save_btn">Сохранить</button>
 					</div>
 					<div className={styles.column}>
 						<TextArea label={"Мероприятия"} tooltip={"Какие мероприятия, связанные с проектом ты планируешь? Обозначь даты "}></TextArea>

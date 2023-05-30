@@ -15,4 +15,23 @@ export default class AuthService {
   static async logout() {
     return api.post("/logout");
   }
+
+  static async getAvatar() {
+    return api.get("/getAvatar");
+  }
+
+  static async setAvatar(avatar) {
+    let data = new FormData();
+    data.append('avatar', avatar)
+
+    return api.post(
+      `/uploadAvatar`,
+      data,
+      {
+        headers: {
+          'Content-Type': `multipart/form-data`
+        },
+      }
+    );
+  }
 }

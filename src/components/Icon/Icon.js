@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
 import upload from "../../icons/upload.svg";
 import styles from "./Icon.module.css";
 
 export const Icon = ({img}) => {
   const [image, setImage] = useState("");
 
+  useEffect(() => {
+      setImage(img)
+  }, [img])
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
     setImage(imageUrl);
   };
+
 
   return (
     <>
@@ -19,9 +24,9 @@ export const Icon = ({img}) => {
             <div>
               <form action="/upload" method="post" encType="multipart/form-data">
               <label className={styles.inputFile}>
-                <input type="file" name="icon" id="icon" onChange={handleImageChange} />
+                <input type="file" name="icon" id="icon" accept=".jpg, .jpeg, .png, .svg"  onChange={handleImageChange} />
                 {image ? (
-                    <img className={styles.blur} src={image} alt="uploader" />
+                    <img className={styles.blur} src={`${process.env.PUBLIC_URL}${image}`} alt="uploader" />
                 ) : (
                     <img src={upload} alt="uploader" className={styles.upload}/>
                 )}

@@ -6,21 +6,22 @@ import { TextArea } from "../../components/TextArea/TextArea";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
 import PromotionService from "../../services/PromotionService";
+import ProjectService from '../../services/ProjectService'
 
 const options = [
   { value: "Социальные сети", label: "Социальные сети" },
-  {
-    value: "Партнерство с другими проектами",
-    label: "Партнерство с другими проектами",
-  },
+  { value: "Партнерство с другими проектами", label: "Партнерство с другими проектами", },
   { value: "Таргетированная реклама", label: "Таргетированная реклама" },
   { value: "Наружная реклама", label: "Наружная реклама" },
 ];
+
+
 
 export const ProjectPromotionPage = () => {
   const [promotion, setPromotion] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const { _id } = useParams();
+  const [nameProject, setNameProject] = useState('')
 
   const handleSelectChange = (selected) => {
     setSelectedOptions(selected);
@@ -33,6 +34,9 @@ export const ProjectPromotionPage = () => {
         setPromotion(res.data);
         setSelectedOptions(JSON.parse(res.data[0].promotions));
       }
+      const resp = await ProjectService.getProjectById(_id);
+      const name = resp.data.data.name
+      setNameProject(name)
     }
 
     fetchData();
@@ -62,7 +66,7 @@ export const ProjectPromotionPage = () => {
         {promotion.length !== 0 ? (
           promotion.map((promo) => (
             <div key={promo._id}>
-              <Header></Header>
+              <Header name={nameProject}></Header>
               <div className={styles.frame}>
                 <div className={styles.column1}>
                   <div className={styles.row1}>
@@ -94,7 +98,7 @@ export const ProjectPromotionPage = () => {
           ))
         ) : (
           <div>
-            <Header></Header>
+            <Header name={nameProject}></Header>
             <div className={styles.frame}>
               <div className={styles.column1}>
                 <div className={styles.row1}>
@@ -124,7 +128,7 @@ export const ProjectPromotionPage = () => {
             </div>
           </div>
         )}
-        <button onClick={submit}>Сохранить</button>
+        <button onClick={submit} className="save_btn">Сохранить</button>
       </div>
     </>
   );

@@ -4,16 +4,16 @@ import bigPlus from '../../icons/bigPlus.svg'
 import styles from "./BlockProject.module.css";
 import { store } from '../../index'
 
-export const BlockProject = ({_id, name, type, description}) => {
+export const BlockProject = ({_id, name, img, cover}) => {
 
 
 	return (
 		<>
 			<button className={styles.block_project}>
 				<NavLink to={`/projectDataPage/${_id}`}>
-				<img className={styles.project_img} src="" alt=""/>
+				<img className={styles.project_img} src={`${process.env.PUBLIC_URL}${cover}`} alt=""/>
 					<div className={styles.project_text}>
-						<img src="" alt="" className={styles.project_icon}/>
+						<img src={`${process.env.PUBLIC_URL}${img}`} alt="" className={styles.project_icon}/>
 							<div className={styles.project_name}>
 								{name}
 								<div className={styles.project_desc}>

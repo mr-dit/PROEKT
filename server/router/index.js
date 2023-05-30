@@ -1,7 +1,7 @@
 const Router = require('express').Router;
-const userController = require('../controllers/user-controller');
-const projectController = require('../controllers/project-controller')
-const noteController = require('../controllers/note-controller')
+const UserController = require('../controllers/user-controller');
+const ProjectController = require('../controllers/project-controller')
+const NoteController = require('../controllers/note-controller')
 const router = new Router();
 const {body} = require('express-validator');
 const authMiddleware = require('../middlewares/auth-middleware');
@@ -16,10 +16,10 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, 'uploads/'); // Папка, куда сохранять загруженные файлы
+		cb(null, '../public/uploads/'); // Папка, куда сохранять загруженные файлы
 	},
 	filename: (req, file, cb) => {
-		cb(null, file.originalname); // Имя файла после сохранения
+		cb(null, new Date().getMilliseconds() + new Date().toISOString() + '-' + file.originalname) // Имя файла после сохранения
 	}
 });
 
@@ -35,32 +35,25 @@ const upload = multer({
 router.post('/registration',
     body('email').isEmail(),
     body('password').isLength({min: 3, max: 32}),
-    userController.registration
+    UserController.registration
 );
-router.post('/login', userController.login);
-router.post('/logout', userController.logout);
+router.post('/login', UserController.login);
+router.post('/logout', UserController.logout);
 // router.get('/activate/:link', userController.activate);
-router.get('/refresh', userController.refresh);
+router.get('/refresh', UserController.refresh);
 
-router.post('/project', upload.single('file'), projectController.create)
-router.post('/project/:id', projectController.update)
-router.get('/project/:id', projectController.getProjectById)
-router.get('/project', projectController.getProjects)
+router.post('/project',upload.fields([{ name: 'file', maxCount: 1 }, { name: 'cover', maxCount: 1 }]), ProjectController.create)
+router.post('/project/:id', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'cover', maxCount: 1 }]), ProjectController.update)
+router.get('/project/:id', ProjectController.getProjectById)
+router.get('/project', ProjectController.getProjects)
 
-router.post('/uploadIcon', upload.any(), (req, res) => {
-	try {
-		if(req.file){
+router.post('/uploadAvatar', upload.single('avatar'), UserController.setAvatar)
+router.get('/getAvatar', UserController.getAvatar)
 
-		}
-	} catch (error){
-		console.log(error)
-	}
-})
-
-router.post('/notes/:id', noteController.create)
-router.post('/note', noteController.update)
-router.post('/noteDelete', noteController.delete)
-router.get('/notes/:id', noteController.getNotes)
+router.post('/notes/:id', NoteController.create)
+router.post('/note', NoteController.update)
+router.post('/noteDelete', NoteController.delete)
+router.get('/notes/:id', NoteController.getNotes)
 
 router.post('/auditory/:id', AuditoryController.update)
 router.get('/auditory/:id', AuditoryController.getAuditoryById)
@@ -80,6 +73,6 @@ router.get('/educations/:id', EducationController.getEducationById)
 router.post('/promotion/:id', PromotionController.update)
 router.get('/promotion/:id', PromotionController.getPromotionById)
 
-router.get('/users', authMiddleware, userController.getUsers);
+router.get('/users', authMiddleware, UserController.getUsers);
 
 module.exports = router

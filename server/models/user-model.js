@@ -5,6 +5,7 @@ const UserSchema = new Schema({
     password: {type: String, required: true},
     isActivated: {type: Boolean, default: false},
     activationLink: {type: String},
+    avatarPath: {type: String, default: "question.svg"},
 })
 
 module.exports = model('User', UserSchema);

@@ -6,15 +6,21 @@ import NoteForm from "../../components/NoteForm/NoteForm";
 import NoteItem from "../../components/NoteItem/NoteItem";
 import { useParams } from "react-router-dom";
 import NoteService from "../../services/NoteService";
+import ProjectService from '../../services/ProjectService'
 
 export const ProjectMyIdeasPage = () => {
   const { _id } = useParams();
   const [notes, setNotes] = useState([]);
+  const [nameProject, setNameProject] = useState('')
 
   useEffect(() => {
     async function fetchData() {
       const res = await NoteService.getNotes(_id);
       setNotes(res.data);
+
+      const resp = await ProjectService.getProjectById(_id);
+      const name = resp.data.data.name
+      setNameProject(name)
     }
 
     fetchData();
@@ -38,7 +44,7 @@ export const ProjectMyIdeasPage = () => {
     <>
       <MenuProject _id={_id}></MenuProject>
       <div className={styles.mainPage}>
-        <Header></Header>
+        <Header name={nameProject}></Header>
         <div className={styles.frame}>
           <div>
             Запиши все идеи, которые возникли в процессе работы

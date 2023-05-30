@@ -7,6 +7,7 @@
 }
 .column1 {
     display: flex;
+    flex: 1;
     flex-direction: column;
     max-width: 475px;
     font-weight: 600;
@@ -15,6 +16,7 @@
 }
 .row1{
     margin-top: 33px;
+    flex: 1;
 }
 
 .column2 {

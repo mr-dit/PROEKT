@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
 import upload from "../../icons/upload.svg";
 import styles from "./Cover.module.css";
 
-export const Cover = () => {
+export const Cover = ({img}) => {
   const [image, setImage] = useState("");
+
+  useEffect(() => {
+    setImage(img)
+  }, [img])
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -17,11 +21,11 @@ export const Cover = () => {
         Обложка проекта
         <div>
           <label className={styles.inputFile}>
-            <input type="file" name="cover" onChange={handleImageChange} />
+            <input type="file" name="cover" id="cover" accept=".jpg, .jpeg, .png, .svg" onChange={handleImageChange} />
             {image ? (
               <img
                 className={styles.blur}
-                src={image}
+                src={`${process.env.PUBLIC_URL}${image}`}
                 alt="uploader"
                 style={{ borderRadius: "26px" }}
               />

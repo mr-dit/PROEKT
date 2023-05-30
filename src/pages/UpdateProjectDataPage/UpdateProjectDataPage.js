@@ -10,17 +10,25 @@ import { Cover } from "../../components/Cover/Cover";
 import { Link, useParams } from "react-router-dom";
 import ProjectService from "../../services/ProjectService";
 import Aa from '../../icons/Aa.svg'
-// import axios from "axios";
+
 
 export const UpdateProjectDataPage = () => {
-  const [title, setTitle] = useState("");
   const [project, setProject] = useState([]);
   const { _id } = useParams();
+  const [imageUrl, setImageUrl] = useState("");
+  const [cover, setCover] = useState("");
 
   useEffect(() => {
     async function fetchData() {
       const res = await ProjectService.getProjectById(_id);
-      await setProject(res.data);
+      const data = res.data
+      const iconUrl = data.file.filePath;
+      const coverUrl = data.file.coverPath
+
+      setImageUrl(iconUrl);
+      setCover(coverUrl)
+
+      await setProject(data.data);
     }
 
     fetchData();
@@ -37,29 +45,29 @@ export const UpdateProjectDataPage = () => {
     const name = document.getElementsByName("name")[0].value;
     const typeProject = document.getElementsByName("typeProject")[0].value;
     const description = document.getElementsByName("text")[0].value;
-    // const icon = document.querySelector('input[type="file"]').files;
-    // const icon = document.getElementsByName('icon')[0].files[0]
-    // const cover = document.getElementsByName('cover')[0].value
+    const icon = document.getElementById('icon').files[0]
+    const cover = document.getElementById('cover').files[0]
 
-    // await ProjectService.update(_id, name, typeProject, description)
     const res = await ProjectService.update(
       _id,
       name,
       typeProject,
-      description
+      description,
+      icon,
+      cover
     );
     if (res.status === 200) {
       alert("Сохранено!");
     }
   };
-  // setTitle(project[0].name)
-  // console.log(title)
+
+
   return (
     <>
       <MenuProject _id={_id}></MenuProject>
       <div className={styles.mainPage}>
 
-        {project.map((project) => (
+        {/*{project.map((project) => (*/}
           <div key={project._id}>
             <Header name={project.name}></Header>
           <div  className={styles.frame}>
@@ -69,8 +77,8 @@ export const UpdateProjectDataPage = () => {
               </div>
               <div className={styles.row1}>
                 <div className={styles.image_project}>
-                  <Icon></Icon>
-                  <Cover></Cover>
+                  <Icon img={`/uploads/${imageUrl}`}></Icon>
+                  <Cover img={`/uploads/${cover}`}></Cover>
                 </div>
               </div>
               <div className={styles.row1}>
@@ -79,13 +87,13 @@ export const UpdateProjectDataPage = () => {
             </div>
             <div className={styles.column2}>
               <div className={styles.row1}>
-                <TextArea value={project.description} label={"Описание проекта"}></TextArea>
+                <TextArea value={project.description} label={"Описание проекта"} tooltip={"На чем будет специализироваться проект? Какие услуги или продукт предоставит?"}></TextArea>
               </div>
             </div>
           </div>
           </div>
-        ))}
-        <button onClick={submit}>Сохранить</button>
+        {/*))}*/}
+        <button onClick={submit} className="save_btn">Сохранить</button>
       </div>
     </>
   );

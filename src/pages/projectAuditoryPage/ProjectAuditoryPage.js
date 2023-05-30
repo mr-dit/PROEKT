@@ -7,16 +7,21 @@ import { TextArea } from "../../components/TextArea/TextArea";
 import { Link, useParams } from "react-router-dom";
 import womanHead from '../../icons/womanHead.svg'
 import AuditoryService from '../../services/AuditoryService'
+import ProjectService from '../../services/ProjectService'
 
 export const ProjectAuditoryPage = () => {
-	const [title, setTitle] = useState("");
 	const [auditory, setAuditory] = useState([]);
+	const [nameProject, setNameProject] = useState('')
 	const { _id } = useParams();
 
 	useEffect(() => {
 		async function fetchData() {
 			const res = await AuditoryService.getAuditoryById(_id);
 			await setAuditory(res.data);
+
+			const resp = await ProjectService.getProjectById(_id);
+			const name = resp.data.data.name
+			setNameProject(name)
 		}
 
 		fetchData();
@@ -52,7 +57,7 @@ export const ProjectAuditoryPage = () => {
 
 				{auditory.length !== 0 ? auditory.map((auditory) => (
 					<div key={auditory._id}>
-						<Header></Header>
+						<Header name={nameProject}></Header>
 						<div  className={styles.frame}>
 							<div className={styles.column1}>
 								<div className={styles.row1}>
@@ -72,7 +77,7 @@ export const ProjectAuditoryPage = () => {
 						</div>
 					</div>
 				)) : <div>
-					<Header></Header>
+					<Header name={nameProject}></Header>
 					<div  className={styles.frame}>
 						<div className={styles.column1}>
 							<div className={styles.row1}>
@@ -89,7 +94,7 @@ export const ProjectAuditoryPage = () => {
 						</div>
 					</div>
 				</div>}
-				<button onClick={submit}>Сохранить</button>
+				<button onClick={submit} className="save_btn">Сохранить</button>
 			</div>
 		</>
 	);

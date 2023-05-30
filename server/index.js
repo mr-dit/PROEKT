@@ -16,7 +16,7 @@ const app = express()
 app.use(express.json());
 app.use(cookieParser());
 // app.use(bodyParser.json());
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use(cors({
     credentials: true,
     origin: process.env.CLIENT_URL

@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../icons/logo.svg";
 import data from "../../icons/data.svg";
-import myIdeas from "../../icons/myIdeas.svg"
+import myIdeas from "../../icons/myIdeas.svg";
 import auditory from "../../icons/auditory.svg";
 import resources from "../../icons/resources.svg";
 import prodvig from "../../icons/prodvig.svg";
@@ -9,16 +9,17 @@ import scaling from "../../icons/scaling.svg";
 import user from "../../icons/user.svg";
 import settings from "../../icons/settings.svg";
 import styles from "./MenuProject.module.css";
-import { NavLink, useNavigate } from 'react-router-dom'
-import { store } from '../../index'
+import { NavLink, useNavigate } from "react-router-dom";
+import { store } from "../../index";
+import exit from "../../icons/exit.png";
 
-export const MenuProject = ({_id}) => {
+export const MenuProject = ({ _id }) => {
   const navigate = useNavigate();
 
   const logout = async () => {
-    await store.logout()
-    navigate(`/`)
-  }
+    await store.logout();
+    navigate(`/`);
+  };
 
   return (
     <>
@@ -42,22 +43,22 @@ export const MenuProject = ({_id}) => {
             </button>
           </NavLink>
           <NavLink to={`/projectAuditory/${_id}`}>
-          <button id="auditory" className={styles.menu__btn}>
-            <img src={auditory} alt="" />
-            Аудитория
-          </button>
+            <button id="auditory" className={styles.menu__btn}>
+              <img src={auditory} alt="" />
+              Аудитория
+            </button>
           </NavLink>
           <NavLink to={`/projectResource/${_id}`}>
-          <button id="resources" className={styles.menu__btn}>
-            <img src={resources} alt="" />
-            Ресурсы
-          </button>
+            <button id="resources" className={styles.menu__btn}>
+              <img src={resources} alt="" />
+              Ресурсы
+            </button>
           </NavLink>
           <NavLink to={`/projectEducation/${_id}`}>
-          <button id="education" className={styles.menu__btn}>
-            <img src={scaling} alt="" />
-            Развитие
-          </button>
+            <button id="education" className={styles.menu__btn}>
+              <img src={scaling} alt="" />
+              Развитие
+            </button>
           </NavLink>
           <NavLink to={`/projectPromotion/${_id}`}>
             <button id="promotion" className={styles.menu__btn}>
@@ -75,7 +76,10 @@ export const MenuProject = ({_id}) => {
           {/*  <img src={settings} alt="" />*/}
           {/*  Настройки*/}
           {/*</button>*/}
-          <button onClick={logout} className={styles.menu__btn}>Выход</button>
+          <button onClick={logout} className={styles.menu__btn}>
+            <img src={exit} alt="" className={styles.icon} />
+            Выход
+          </button>
         </div>
       </menu>
     </>

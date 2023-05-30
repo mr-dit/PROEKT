@@ -8,11 +8,12 @@ const ApiError = require("../exceptions/api-error");
 const ProjectModel = require("../models/projects-model");
 
 class ProjectService {
-  async create(user_id, name, iconPath, type, description) {
+  async create(user_id, name, iconPath, coverPath, type, description) {
     const project = await ProjectModel.create({
       user_id: user_id,
       name: name,
       iconPath: iconPath,
+      coverPath: coverPath,
       type: type,
       description: description,
     });
@@ -20,17 +21,49 @@ class ProjectService {
     return { ...project };
   }
 
-  async update(_id, name, type, description, user_id) {
+  async update(_id, name, type, description, files) {
     const oldProject = await ProjectModel.findOne({ _id: _id });
     if (oldProject) {
-      const updateDocument = {
-        $set: {
-          name: name,
-          type: type,
-          description: description,
-        },
-      };
-      return ProjectModel.updateOne(oldProject, updateDocument);
+      if (Object.keys(files).length === 2){
+        const iconPath =  files['file'][0].filename
+        const coverPath = files['cover'][0].filename
+        const updateDocument = {
+          $set: {
+            name: name,
+            iconPath: iconPath,
+            coverPath: coverPath,
+            type: type,
+            description: description,
+          },
+        };
+        return ProjectModel.updateOne(oldProject, updateDocument);
+      }
+      else if (files['file']) {
+        const iconPath =  files['file'][0].filename
+        const updateDocument = {
+          $set: {
+            name: name,
+            iconPath: iconPath,
+            coverPath: oldProject.coverPath,
+            type: type,
+            description: description,
+          },
+        };
+        return ProjectModel.updateOne(oldProject, updateDocument);
+      }
+      else if (files['cover']) {
+        const coverPath = files['cover'][0].filename
+        const updateDocument = {
+          $set: {
+            name: name,
+            iconPath: oldProject.iconPath,
+            coverPath: coverPath,
+            type: type,
+            description: description,
+          },
+        };
+        return ProjectModel.updateOne(oldProject, updateDocument);
+      }
     }
   }
 

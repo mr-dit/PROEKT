@@ -13,6 +13,7 @@ export const MyProjectPage = () => {
 	useEffect( () => {
 		async function fetchData(){
 			const res = await ProjectService.getProjects()
+
 			setProjects(res.data)
 		}
 		fetchData()
@@ -25,7 +26,7 @@ export const MyProjectPage = () => {
 				<Header></Header>
 				<div className={styles.project_row}>
 				{projects.map(project => (
-					<BlockProject key={project._id} _id={project._id} name={project.name}></BlockProject>
+					<BlockProject key={project._id} _id={project._id} name={project.name} img={`/uploads/${project.iconPath}`} cover={`/uploads/${project.coverPath}`}></BlockProject>
 				))
 
 				}

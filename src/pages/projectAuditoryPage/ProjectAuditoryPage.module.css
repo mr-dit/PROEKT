@@ -16,10 +16,12 @@
 }
 .row1{
     margin-top: 33px;
+    display: flex;
+    flex-direction: column;
 }
 
 .column2 {
-    flex-grow: 1;
+    flex: 1;
     max-width: 599px;
     margin-left: 100px;
 }

@@ -1,6 +1,8 @@
 const userService = require('../service/user-service');
 const {validationResult} = require('express-validator');
 const ApiError = require('../exceptions/api-error');
+const { verify } = require('jsonwebtoken')
+const projectService = require('../service/project-service')
 
 class UserController {
     async registration(req, res, next) {
@@ -65,6 +67,42 @@ class UserController {
         try {
             const users = await userService.getAllUsers();
             return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async setAvatar(req, res, next) {
+        try {
+            const token = req.headers.authorization.split(" ")[1];
+            const decoded = verify(token, process.env.JWT_ACCESS_SECRET);
+            const user_id = decoded.id;
+
+            const file = req.file
+            if (user_id){
+                const userData = await userService.setAvatar(
+                  file,
+                  user_id
+                )
+                return res.json(userData);
+            }
+
+
+
+        } catch (e) {
+            next(e);
+        }
+    }
+    async getAvatar(req, res, next) {
+        try {
+            const token = req.headers.authorization.split(" ")[1];
+            const decoded = verify(token, process.env.JWT_ACCESS_SECRET);
+            const user_id = decoded.id;
+
+            if (user_id){
+                const userData = await userService.getAvatar(user_id                )
+                return res.json(userData);
+            }
         } catch (e) {
             next(e);
         }

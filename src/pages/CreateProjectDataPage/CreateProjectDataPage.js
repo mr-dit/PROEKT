@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { MenuProject } from "../../components/MenuProject/MenuProject";
 import { Header } from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input";
 import styles from "./CreateProjectDataPage.module.css";
@@ -7,25 +6,23 @@ import { Icon } from "../../components/Icon/Icon";
 import { Select } from "../../components/Select/Select";
 import { TextArea } from "../../components/TextArea/TextArea";
 import { Cover } from "../../components/Cover/Cover";
-import { Link, redirect, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import ProjectService from '../../services/ProjectService'
 import Aa from '../../icons/Aa.svg'
 import { useNavigate } from 'react-router-dom';
-// import axios from "axios";
+import logo from '../../icons/logo.svg'
+import data from '../../icons/data.svg'
+import user from '../../icons/user.svg'
+import { store } from '../../index'
+import exit from '../../icons/exit.png'
 
 export const CreateProjectDataPage = () => {
   const navigate = useNavigate();
-  // const [project, setProject] = useState([])
-  // const { _id } = useParams();
 
-  // useEffect( () => {
-  //   async function fetchData() {
-  //     const res = await ProjectService.getProjectById(_id)
-  //     setProject(res.data)
-  //
-  //   }
-  //   fetchData()
-  // }, [_id])
+  const logout = async () => {
+    await store.logout()
+    navigate(`/`)
+  }
 
   useEffect(() => {
     const button = document.getElementById("data");
@@ -38,12 +35,10 @@ export const CreateProjectDataPage = () => {
     const name = document.getElementsByName('name')[0].value
     const typeProject = document.getElementsByName('typeProject')[0].value
     const description = document.getElementsByName('text')[0].value
-    // const icon = document.getElementById('icon').files[0]
+    const icon = document.getElementById('icon').files[0]
+    const cover = document.getElementById('cover').files[0]
 
-    // const icon = document.getElementsByName('icon')[0].files[0]
-    // const cover = document.getElementsByName('cover')[0].value
-    const res = await ProjectService.create(name, typeProject, description)
-    // const res = await ProjectService.create(name, typeProject, description, icon)
+    const res = await ProjectService.create(name, typeProject, description, icon, cover)
 
     if (res.status === 200) {
       return navigate(`/projectDataPage/${res.data._doc._id}`)
@@ -52,7 +47,31 @@ export const CreateProjectDataPage = () => {
 
   return (
     <>
-      <MenuProject></MenuProject>
+      <menu className={styles.menu}>
+        <div className={styles.menu__item}>
+          <NavLink to="/">
+            <img className={styles.logo} src={logo} alt="" />
+          </NavLink>
+        </div>
+        <div className={styles.menu__item}>
+          <NavLink to={`/projectDataPage`}>
+            <button id="data" className={styles.menu__btn}>
+              <img src={data} alt="" />
+              Данные проекта
+            </button>
+          </NavLink>
+        </div>
+        <div className={styles.menu__item}>
+          <button className={styles.menu__btn}>
+            <img src={user} alt="" />
+            Мой профиль
+          </button>
+          <button onClick={logout} className={styles.menu__btn}>
+            <img src={exit} alt="" className={styles.icon} />
+            Выход
+          </button>
+        </div>
+      </menu>
       <div className={styles.mainPage}>
         <Header></Header>
           <div className={styles.frame}>
@@ -72,11 +91,11 @@ export const CreateProjectDataPage = () => {
             </div>
             <div className={styles.column2}>
               <div className={styles.row1}>
-                <TextArea value={''} label={"Описание проекта"}></TextArea>
+                <TextArea value={''} label={"Описание проекта"} tooltip={"На чем будет специализироваться проект? Какие услуги или продукт предоставит?"}></TextArea>
               </div>
             </div>
           </div>
-        <button onClick={submit}>Создать</button>
+        <button onClick={submit} className="save_btn">Создать</button>
       </div>
     </>
   );
