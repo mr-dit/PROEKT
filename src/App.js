@@ -3,7 +3,7 @@ import { Context } from "./index";
 import { observer } from "mobx-react-lite";
 // import UserService from "./services/UserService";
 import AuthPage  from "./pages/AuthPage/AuthPage";
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { useRoutes } from './routes'
 
 const App = () => {
@@ -24,9 +24,9 @@ const App = () => {
 
   if (!store.isAuth) {
     return (
-      <div className="container">
-        <AuthPage />
-      </div>
+        <div className="container">
+          <AuthPage />
+        </div>
     );
   }
 

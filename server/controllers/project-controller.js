@@ -13,19 +13,12 @@ class ProjectController {
       const token = req.headers.authorization.split(" ")[1];
       const decoded = verify(token, process.env.JWT_ACCESS_SECRET);
       const user_id = decoded.id
-      const { name, type, description} = req.body;
-      const iconPath =  req.files['file'][0].filename
-      const coverPath = req.files['cover'][0].filename
+      // const { name, type, description} = req.body;
+      // const iconPath =  req.files['file'][0].filename
+      // const coverPath = req.files['cover'][0].filename
 
       const userData
-        = await projectService.create(
-        user_id,
-        name,
-        iconPath,
-        coverPath,
-        type,
-        description
-      )
+        = await projectService.create(user_id)
 
       // return res.json();
       return res.json(userData);

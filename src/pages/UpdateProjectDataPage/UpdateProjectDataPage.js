@@ -61,7 +61,6 @@ export const UpdateProjectDataPage = () => {
     }
   };
 
-
   return (
     <>
       <MenuProject _id={_id}></MenuProject>

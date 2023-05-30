@@ -68,10 +68,10 @@ export const MenuProject = ({ _id }) => {
           </NavLink>
         </div>
         <div className={styles.menu__item}>
-          <button className={styles.menu__btn}>
-            <img src={user} alt="" />
-            Мой профиль
-          </button>
+          {/*<button className={styles.menu__btn}>*/}
+          {/*  <img src={user} alt="" />*/}
+          {/*  Мой профиль*/}
+          {/*</button>*/}
           {/*<button className={styles.menu__btn}>*/}
           {/*  <img src={settings} alt="" />*/}
           {/*  Настройки*/}

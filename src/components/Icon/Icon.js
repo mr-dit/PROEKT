@@ -6,6 +6,7 @@ export const Icon = ({img}) => {
   const [image, setImage] = useState("");
   const serverUrl = process.env.REACT_APP_SERVER_URL
 
+
   useEffect(() => {
       setImage(img)
   }, [img])
@@ -15,7 +16,6 @@ export const Icon = ({img}) => {
     const imageUrl = URL.createObjectURL(file);
     setImage(imageUrl);
   };
-
 
   return (
     <>
@@ -27,7 +27,7 @@ export const Icon = ({img}) => {
               <label className={styles.inputFile}>
                 <input type="file" name="icon" id="icon" accept=".jpg, .jpeg, .png, .svg"  onChange={handleImageChange} />
                 {
-                  image
+                  image && !image.includes('undef') && !image.includes('null')
                     ? image.includes('blob')
                       ? ( <img className={styles.blur} src={`${image}`} alt="uploader" /> )
                       : ( <img className={styles.blur} src={`${serverUrl}${image}`} alt="uploader" /> )

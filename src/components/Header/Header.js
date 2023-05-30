@@ -21,7 +21,6 @@ export const Header = ({ name }) => {
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
-    console.log(file)
     setImage(imageUrl);
 
     const avatar = document.getElementById('avatar').files[0]
@@ -46,7 +45,7 @@ export const Header = ({ name }) => {
           <div className={styles.profile}>
             <div>
               {
-                image
+                image && !image.includes('undef') && !image.includes('null')
                   ?
                   image.includes('blob')
                     ? <img className={styles.img_profile} src={`${image}`} alt="" />

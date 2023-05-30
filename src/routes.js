@@ -9,6 +9,7 @@ import {ProjectAuditoryPage} from './pages/projectAuditoryPage/ProjectAuditoryPa
 import { ProjectResourcesPage } from './pages/ProjectResourcesPage/ProjectResourcesPage'
 import { ProjectEducationPage } from './pages/projectEducationPage/ProjectEducationPage'
 import { ProjectPromotionPage } from './pages/projectPromotionPage/ProjectPromotionPage'
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage'
 
 
 export const useRoutes = (isAuthenticated) => {
@@ -53,6 +54,8 @@ export const useRoutes = (isAuthenticated) => {
           element={<ProjectPromotionPage></ProjectPromotionPage>}
         ></Route>
 
+
+
         <Route path="*" element={<Navigate to="/myProject" replace />} />
       </Routes>
     );
@@ -62,6 +65,7 @@ export const useRoutes = (isAuthenticated) => {
     <Routes>
       <Route path="/" element={<AuthPage></AuthPage>}></Route>
       <Route path="*" element={<Navigate to="/" replace />} />
+
     </Routes>
   );
 };

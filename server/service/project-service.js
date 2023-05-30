@@ -11,11 +11,6 @@ class ProjectService {
   async create(user_id, name, iconPath, coverPath, type, description) {
     const project = await ProjectModel.create({
       user_id: user_id,
-      name: name,
-      iconPath: iconPath,
-      coverPath: coverPath,
-      type: type,
-      description: description,
     });
 
     return { ...project };

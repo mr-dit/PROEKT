@@ -24,7 +24,7 @@ export const Cover = ({img}) => {
           <label className={styles.inputFile}>
             <input type="file" name="cover" id="cover" accept=".jpg, .jpeg, .png, .svg" onChange={handleImageChange} />
             {
-              image
+              image && !image.includes('undef') && !image.includes('null')
                 ?
                 image.includes('blob')
                   ? ( <img className={styles.blur} src={`${image}`} alt="uploader" style={{ borderRadius: "26px" }} /> )
