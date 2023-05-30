@@ -25,11 +25,13 @@ export const Icon = ({img}) => {
               <form action="/upload" method="post" encType="multipart/form-data">
               <label className={styles.inputFile}>
                 <input type="file" name="icon" id="icon" accept=".jpg, .jpeg, .png, .svg"  onChange={handleImageChange} />
-                {image ? (
-                    <img className={styles.blur} src={`${process.env.PUBLIC_URL}${image}`} alt="uploader" />
-                ) : (
-                    <img src={upload} alt="uploader" className={styles.upload}/>
-                )}
+                {
+                  image
+                    ? image.includes('blob')
+                      ? ( <img className={styles.blur} src={`${image}`} alt="uploader" /> )
+                      : ( <img className={styles.blur} src={`http://localhost:5000${image}`} alt="uploader" /> )
+                    : ( <img src={upload} alt="uploader" className={styles.upload}/> )
+                }
               </label>
               </form>
             </div>

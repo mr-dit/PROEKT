@@ -12,11 +12,12 @@ const ResourceTimeController = require('../controllers/resourceTime-controller')
 const EducationController = require('../controllers/education-controller')
 const PromotionController = require('../controllers/promotion-controller')
 const fileMiddleware = require('../middlewares/file-middleware')
+const path = require('path');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, '../public/uploads/'); // Папка, куда сохранять загруженные файлы
+		cb(null, './uploads/'); // Папка, куда сохранять загруженные файлы
 	},
 	filename: (req, file, cb) => {
 		cb(null, new Date().getMilliseconds() + new Date().toISOString() + '-' + file.originalname) // Имя файла после сохранения
@@ -25,6 +26,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
 	storage: storage,
+
 	limits: { fileSize: 1024 * 1024 * 5 }, // Ограничение размера файла (5MB)
 });
 
@@ -73,6 +75,6 @@ router.get('/educations/:id', EducationController.getEducationById)
 router.post('/promotion/:id', PromotionController.update)
 router.get('/promotion/:id', PromotionController.getPromotionById)
 
-router.get('/users', authMiddleware, UserController.getUsers);
 
+router.get('/users', authMiddleware, UserController.getUsers);
 module.exports = router

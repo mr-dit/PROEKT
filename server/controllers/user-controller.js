@@ -86,9 +86,6 @@ class UserController {
                 )
                 return res.json(userData);
             }
-
-
-
         } catch (e) {
             next(e);
         }

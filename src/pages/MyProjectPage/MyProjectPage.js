@@ -26,7 +26,7 @@ export const MyProjectPage = () => {
 				<Header></Header>
 				<div className={styles.project_row}>
 				{projects.map(project => (
-					<BlockProject key={project._id} _id={project._id} name={project.name} img={`/uploads/${project.iconPath}`} cover={`/uploads/${project.coverPath}`}></BlockProject>
+					<BlockProject key={project._id} _id={project._id} name={project.name} img={`http://localhost:5000/uploads/${project.iconPath}`} cover={`http://localhost:5000/uploads/${project.coverPath}`}></BlockProject>
 				))
 
 				}

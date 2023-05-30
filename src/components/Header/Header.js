@@ -6,27 +6,25 @@ import AuthService from '../../services/AuthService'
 export const Header = ({ name }) => {
   const [image, setImage] = useState("");
 
-
   useEffect(() => {
     async function fetchData() {
       const res = await AuthService.getAvatar();
 
       const data = res.data
       const iconUrl = data.avatarPath;
-      setImage(`/uploads/${iconUrl}`);
+      setImage(`${iconUrl}`);
     }
     fetchData();
-  }, [])
+  }, [image])
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
+    console.log(file)
     setImage(imageUrl);
 
     const avatar = document.getElementById('avatar').files[0]
     await AuthService.setAvatar(avatar);
-
-
   };
 
   return (
@@ -46,11 +44,15 @@ export const Header = ({ name }) => {
           {/*</button>*/}
           <div className={styles.profile}>
             <div>
-              <img
-                className={styles.img_profile}
-                src={`${process.env.PUBLIC_URL}${image}`}
-                alt=""
-              />
+              {
+                image
+                  ?
+                  image.includes('blob')
+                    ? <img className={styles.img_profile} src={`${image}`} alt="" />
+                    : <img className={styles.img_profile} src={`http://localhost:5000/uploads/${image}`} alt="" />
+                  : <div></div>
+              }
+
             </div>
             <button className={styles.reload_block}>
               <label className={styles.inputFile}>
