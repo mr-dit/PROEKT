@@ -3,7 +3,8 @@ import axios from 'axios';
 import {store} from "../index";
 // import {IUser} from "../models/IUser";
 
-export const API_URL = `http://localhost:5000/api`
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+export const API_URL = `${serverUrl}/api`
 
 const api = axios.create({
 	withCredentials: true,

@@ -4,6 +4,7 @@ import styles from "./Icon.module.css";
 
 export const Icon = ({img}) => {
   const [image, setImage] = useState("");
+  const serverUrl = process.env.REACT_APP_SERVER_URL
 
   useEffect(() => {
       setImage(img)
@@ -29,7 +30,7 @@ export const Icon = ({img}) => {
                   image
                     ? image.includes('blob')
                       ? ( <img className={styles.blur} src={`${image}`} alt="uploader" /> )
-                      : ( <img className={styles.blur} src={`http://localhost:5000${image}`} alt="uploader" /> )
+                      : ( <img className={styles.blur} src={`${serverUrl}${image}`} alt="uploader" /> )
                     : ( <img src={upload} alt="uploader" className={styles.upload}/> )
                 }
               </label>

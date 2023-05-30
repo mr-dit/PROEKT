@@ -4,6 +4,7 @@ import styles from "./Cover.module.css";
 
 export const Cover = ({img}) => {
   const [image, setImage] = useState("");
+  const serverUrl = process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
     setImage(img)
@@ -27,7 +28,7 @@ export const Cover = ({img}) => {
                 ?
                 image.includes('blob')
                   ? ( <img className={styles.blur} src={`${image}`} alt="uploader" style={{ borderRadius: "26px" }} /> )
-                  : ( <img className={styles.blur} src={`http://localhost:5000${image}`} alt="uploader" style={{ borderRadius: "26px" }} /> )
+                  : ( <img className={styles.blur} src={`${serverUrl}${image}`} alt="uploader" style={{ borderRadius: "26px" }} /> )
                 : (
                 <>
                   <img src={upload} alt="uploader" className={styles.upload} />

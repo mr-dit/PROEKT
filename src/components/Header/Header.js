@@ -5,6 +5,7 @@ import AuthService from '../../services/AuthService'
 
 export const Header = ({ name }) => {
   const [image, setImage] = useState("");
+  const serverUrl = process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
     async function fetchData() {
@@ -49,7 +50,7 @@ export const Header = ({ name }) => {
                   ?
                   image.includes('blob')
                     ? <img className={styles.img_profile} src={`${image}`} alt="" />
-                    : <img className={styles.img_profile} src={`http://localhost:5000/uploads/${image}`} alt="" />
+                    : <img className={styles.img_profile} src={`${serverUrl}/uploads/${image}`} alt="" />
                   : <div></div>
               }
 

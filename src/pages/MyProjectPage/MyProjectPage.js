@@ -9,6 +9,7 @@ import { BlockProject } from '../../components/BlockProject/BlockProject'
 
 export const MyProjectPage = () => {
 	const [projects, setProjects] = useState([])
+	const serverUrl = process.env.REACT_APP_SERVER_URL
 
 	useEffect( () => {
 		async function fetchData(){
@@ -26,7 +27,7 @@ export const MyProjectPage = () => {
 				<Header></Header>
 				<div className={styles.project_row}>
 				{projects.map(project => (
-					<BlockProject key={project._id} _id={project._id} name={project.name} img={`http://localhost:5000/uploads/${project.iconPath}`} cover={`http://localhost:5000/uploads/${project.coverPath}`}></BlockProject>
+					<BlockProject key={project._id} _id={project._id} name={project.name} img={`${serverUrl}/uploads/${project.iconPath}`} cover={`${serverUrl}/uploads/${project.coverPath}`}></BlockProject>
 				))
 
 				}
