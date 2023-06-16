@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NoteForm.module.css";
-import ProjectService from "../../services/ProjectService";
 import NoteService from "../../services/NoteService";
 import { useParams } from "react-router-dom";
 

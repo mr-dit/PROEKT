@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import question from "../../icons/question.svg";
-import cloud from "../../icons/cloud.svg";
 import styles from "./TextArea.module.css";
 
 export const TextArea = ({ value="", label, tooltip }) => {
@@ -24,9 +23,6 @@ export const TextArea = ({ value="", label, tooltip }) => {
         <div className={styles.desc_project_row}>
           <h6>
             {label}
-            {/*<button className={styles.question}>*/}
-            {/*  <img src={question} alt="" />*/}
-            {/*</button>*/}
             <div className={styles.tooltip}><img src={question} alt="" />
               <span className={styles.tooltiptext}>{tooltip}</span>
             </div>
