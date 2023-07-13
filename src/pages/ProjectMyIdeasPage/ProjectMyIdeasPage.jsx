@@ -28,9 +28,10 @@ export const ProjectMyIdeasPage = () => {
 
   useEffect(() => {
     const button = document.getElementById("myIdeas");
+    const span = button.getElementsByTagName("span")[0]
     button.style.backgroundColor = "#F4F4F4";
     button.style.borderRadius = "12px";
-    button.style.color = "#8700DA";
+    span.style.color = "#8700DA";
   }, []);
 
   const handleDeleteNotes = (deletedNoteId) => {

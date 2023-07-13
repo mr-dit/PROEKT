@@ -5,7 +5,7 @@ import styles from "./CreateProjectDataPage.module.css";
 import { Icon } from "../../components/Icon/Icon";
 import { Select } from "../../components/Select/Select";
 import { TextArea } from "../../components/TextArea/TextArea";
-import { Cover } from "../../components/Cover/Cover";
+import Cover  from "../../components/Cover/Cover";
 import { NavLink } from 'react-router-dom'
 import ProjectService from '../../services/ProjectService'
 import Aa from '../../icons/Aa.svg'

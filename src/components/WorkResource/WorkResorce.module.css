@@ -61,3 +61,11 @@ select:first-child {
     background-color: #FCFCFC;
     border-radius: 20px;
 }
+@media (max-width: 1200px) {
+    .column:first-child{
+        margin-right: 0px;
+    }
+    .frame{
+        flex-direction: column;
+    }
+}

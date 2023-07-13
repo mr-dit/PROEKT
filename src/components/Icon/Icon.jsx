@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import upload from "../../icons/upload.svg";
 import styles from "./Icon.module.css";
 
-export const Icon = ({img}) => {
+export const Icon = ({img, onChange}) => {
   const [image, setImage] = useState("");
   const serverUrl = process.env.REACT_APP_SERVER_URL
 
@@ -15,6 +15,7 @@ export const Icon = ({img}) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
     setImage(imageUrl);
+    onChange(imageUrl);
   };
 
   return (

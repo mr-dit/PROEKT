@@ -33,37 +33,37 @@ export const MenuProject = ({ _id }) => {
           <NavLink to={`/projectDataPage/${_id}`}>
             <button id="data" className={styles.menu__btn}>
               <img src={data} alt="" />
-              Данные проекта
+              <span className={styles.buttonText}>Данные проекта</span>
             </button>
           </NavLink>
           <NavLink to={`/projectMyIdeas/${_id}`}>
             <button id="myIdeas" className={styles.menu__btn}>
               <img src={myIdeas} alt="" />
-              Мои идеи
+              <span className={styles.buttonText}>Мои идеи</span>
             </button>
           </NavLink>
           <NavLink to={`/projectAuditory/${_id}`}>
             <button id="auditory" className={styles.menu__btn}>
               <img src={auditory} alt="" />
-              Аудитория
+              <span className={styles.buttonText}>Аудитория</span>
             </button>
           </NavLink>
           <NavLink to={`/projectResource/${_id}`}>
             <button id="resources" className={styles.menu__btn}>
               <img src={resources} alt="" />
-              Ресурсы
+              <span className={styles.buttonText}>Ресурсы</span>
             </button>
           </NavLink>
           <NavLink to={`/projectEducation/${_id}`}>
             <button id="education" className={styles.menu__btn}>
               <img src={scaling} alt="" />
-              Развитие
+              <span className={styles.buttonText}>Развитие</span>
             </button>
           </NavLink>
           <NavLink to={`/projectPromotion/${_id}`}>
             <button id="promotion" className={styles.menu__btn}>
               <img src={prodvig} alt="" />
-              Продвижение
+              <span className={styles.buttonText}>Продвижение</span>
             </button>
           </NavLink>
         </div>
@@ -78,7 +78,7 @@ export const MenuProject = ({ _id }) => {
           {/*</button>*/}
           <button onClick={logout} className={styles.menu__btn}>
             <img src={exit} alt="" className={styles.icon} />
-            Выход
+            <span className={styles.buttonText}>Выход</span>
           </button>
         </div>
       </menu>

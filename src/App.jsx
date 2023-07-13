@@ -38,29 +38,3 @@ const App = () => {
 };
 
 export default observer(App);
-
-// import React from "react";
-// import { BrowserRouter as Router} from "react-router-dom";
-// import { useRoutes } from "./routes";
-// import AuthPage from "./pages/AuthPage/AuthPage";
-//
-//
-//
-// function App() {
-//   const routes = useRoutes();
-//   const token = localStorage.getItem("token");
-//
-//   // if (!token) {
-//   //   return <AuthPage/>;
-//   // }
-//
-//
-//
-//   return (
-//     <Router>
-//       <div className="container">{routes}</div>
-//     </Router>
-//   );
-// }
-//
-// export default App;

@@ -12,7 +12,6 @@ import activeWork from '../../icons/blueWork.svg'
 import activeClock from "../../icons/activeClock.svg"
 import { WorkResource } from '../../components/WorkResource/WorkResource'
 import { TimeResource } from '../../components/TimeResource/TimeResource'
-import AuditoryService from '../../services/AuditoryService'
 import ProjectService from '../../services/ProjectService'
 
 export const ProjectResourcesPage = () => {
@@ -43,7 +42,8 @@ export const ProjectResourcesPage = () => {
     const button = document.getElementById("resources");
     button.style.backgroundColor = "#F4F4F4";
     button.style.borderRadius = "12px";
-    button.style.color = "#8700DA";
+    const span = button.getElementsByTagName("span")[0]
+    span.style.color = "#8700DA";
   }, []);
 
 

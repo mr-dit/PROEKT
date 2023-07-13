@@ -113,3 +113,34 @@
     visibility: visible;
     opacity: 1;
 }
+
+@media (max-width: 1500px) {
+    .tooltip .tooltiptext {
+        width: 180px;
+    }
+    .desc_project_block {
+        min-width: 315px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .tooltip .tooltiptext {
+        width: 160px;
+    }
+}
+
+@media (max-width: 670px){
+    .tooltip .tooltiptext {
+        left: -18vw;
+    }
+    .desc_project_row > h6{
+        font-size: 18px;
+    }
+    .desc_project_block {
+        min-width: 280px;
+    }
+    .span{
+        font-size: 18px;
+    }
+}
+

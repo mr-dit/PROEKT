@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'VelaSans';
   src: local('VelaSans-Bold'),
-  url('./fonts/VelaSans-Bold.woff2') format('woff2'),
-  url('fonts/VelaSans-Bold.woff') format('woff');
+    url('./fonts/VelaSans-Bold.woff2') format('woff2'),
+    url('fonts/VelaSans-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -10,15 +10,16 @@
 @font-face {
   font-family: 'VelaSans';
   src: local('VelaSans-SemiBold'),
-  url('./fonts/VelaSans-SemiBold.woff2') format('woff2'),
-  url('fonts/VelaSans-SemiBold.woff') format('woff');
+    url('./fonts/VelaSans-SemiBold.woff2') format('woff2'),
+    url('fonts/VelaSans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
 }
 
-*{
+* {
   font-family: 'VelaSans', sans-serif;
 }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -57,7 +58,7 @@ body {
 .container {
   max-width: 1680px;
   margin: 0 auto;
-  padding: 72px 20px 0 20px;
+  padding: 72px 124px 0 124px;
   min-height: 100%;
   display: flex;
 }
@@ -71,7 +72,7 @@ h1 {
   white-space: nowrap;
 }
 
-h6{
+h6 {
   display: flex;
   margin: 0;
   font-size: 20px;
@@ -83,7 +84,7 @@ input::placeholder {
   color: rgba(62, 62, 62, 0.3);
 }
 
-input{
+input {
   background-repeat: no-repeat;
   padding-left: 56px;
   background-position: 16px 20px;
@@ -96,6 +97,59 @@ input{
   color: #000000;
 }
 
-.save_btn:hover{
-background-color: #F4F4F4;
+.save_btn {
+  width: 280px;
+  display: inline-flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: var(--unnamed, #F4F4F4);
+  color: var(--unnamed, #9F9F9F);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.save_btn:hover {
+  color: #8700DA;
+}
+
+.error-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #ff8080;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+
+@media (max-width: 1400px) {
+  .container {
+    padding: 72px 70px 0 70px;
+  }
+}
+
+@media (max-width: 890px) {
+  .container {
+    padding: 72px 40px 0 40px;
+  }
+
+  
+}
+
+@media (max-width: 670px) {
+  .container {
+    padding: 20px 20px 0 20px;
+  }
+  .save_btn {
+    width: 100%;
+  }
+
+  
 }

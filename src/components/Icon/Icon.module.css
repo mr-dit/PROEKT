@@ -98,3 +98,13 @@ span {
     width: 0;
     height: 0;
 }
+
+@media (max-width: 670px) {
+    .icon_project > div {
+        width: 83px;
+        height: 83px;
+    }
+    .icon_project {
+        margin-right: 12px;
+    }
+}

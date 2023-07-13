@@ -42,3 +42,17 @@
     background-color: #FCFCFC;
     border-radius: 20px;
 }
+
+@media (max-width: 1200px) {
+    .frame {
+        flex-direction: column;
+        max-width: 474px;
+    }
+    .row1:first-child{
+        margin: 0;
+    }
+
+    .column2 {
+        margin: 0;
+    }
+}

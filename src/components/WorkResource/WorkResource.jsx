@@ -1,71 +1,88 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import styles from "./WorkResorce.module.css";
-import { TextArea } from '../TextArea/TextArea'
-import ResourceWorkService from '../../services/ResourceWorkService'
+import { TextArea } from "../TextArea/TextArea";
+import ResourceWorkService from "../../services/ResourceWorkService";
 
+export const WorkResource = ({ _id }) => {
+  const [workData, setWorkData] = useState({});
+  const [isFormChanged, setIsFormChanged] = useState(false);
 
-export const WorkResource = ({_id}) => {
-	const [workData, setWorkData] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const res = await ResourceWorkService.getResourceWorkById(_id);
+      if (res.data.length > 0) {
+        setWorkData(res.data[0]);
+      }
+    }
+    fetchData();
+  }, [_id]);
 
-	useEffect(() => {
-		async function fetchData() {
-			const res = await ResourceWorkService.getResourceWorkById(_id);
-			if (res.data.length > 0) {
-				setWorkData(res.data);
-			}
-		}
-		fetchData();
-	}, [_id]);
+  const handleInputChange = (field, value) => {
+    setWorkData((prevProject) => ({
+      ...prevProject,
+      [field]: value,
+    }));
+    setIsFormChanged(true);
+  };
 
+  const submit = async () => {
+    const members = document.getElementsByName("text")[0].value;
+    const roles = document.getElementsByName("text")[1].value;
+    const functions = document.getElementsByName("text")[2].value;
+    const missingSkills = document.getElementsByName("text")[3].value;
 
-	const submit = async () => {
-		const members = document.getElementsByName("text")[0].value;
-		const roles = document.getElementsByName("text")[1].value;
-		const functions = document.getElementsByName("text")[2].value;
-		const missingSkills = document.getElementsByName("text")[3].value;
-		
-		const res = await ResourceWorkService.update(
-			_id,
-			members,
-			roles,
-			functions,
-			missingSkills
-		);
-		if (res.status === 200) {
-			alert("Сохранено!");
-		}
-	};
+    const res = await ResourceWorkService.update(
+      _id,
+      members,
+      roles,
+      functions,
+      missingSkills
+    );
+    if (res.status === 200) {
+      alert("Сохранено!");
+      setIsFormChanged(false);
+    }
+  };
 
-
-	return (
-		<>
-			{workData.length !== 0 ? ( workData.map((wd) => (
-			<div key={wd._id} className={styles.frame}>
-				<div className={styles.column}>
-					<TextArea value={wd.members} label={"Список участников"} tooltip={"Перечисли специалистов проекта"}></TextArea>
-					<TextArea value={wd.roles} label={"Роли участников команды"} tooltip={"Какие роли в команде они будут занимать?"}></TextArea>
-					<TextArea value={wd.functions} label={"Функции участников команды"} tooltip={"Опиши ключевые функции каждого участника"}></TextArea>
-					<button onClick={submit} className="save_btn">Сохранить</button>
-				</div>
-				<div className={styles.column}>
-					<TextArea value={wd.missingSkills} label={"Недостающие навыки"} tooltip={"Пропиши навыки, которых не хватает в команде для реализации проекта "}></TextArea>
-				</div>
-			</div>
-				))
-				) : (
-				<div className={styles.frame}>
-					<div className={styles.column}>
-						<TextArea value={""} label={"Список участников"} tooltip={"Перечисли специалистов проекта"}></TextArea>
-						<TextArea value={""} label={"Роли участников команды"} tooltip={"Какие роли в команде они будут занимать?"}></TextArea>
-						<TextArea value={""} label={"Функции участников команды"} tooltip={"Опиши ключевые функции каждого участника"}></TextArea>
-						<button onClick={submit} className="save_btn">Сохранить</button>
-					</div>
-					<div className={styles.column}>
-						<TextArea value={""} label={"Недостающие навыки"} tooltip={"Пропиши навыки, которых не хватает в команде для реализации проекта "}></TextArea>
-					</div>
-				</div>
-			)}
-
-		</>
-	);
+  return (
+    <>
+      <div key={workData._id} className={styles.frame}>
+        <div className={styles.column}>
+          <TextArea
+            value={workData.members}
+            label={"Список участников"}
+            tooltip={"Перечисли специалистов проекта"}
+            onChange={(value) => handleInputChange("members", value)}
+          ></TextArea>
+          <TextArea
+            value={workData.roles}
+            label={"Роли участников команды"}
+            tooltip={"Какие роли в команде они будут занимать?"}
+            onChange={(value) => handleInputChange("roles", value)}
+          ></TextArea>
+          <TextArea
+            value={workData.functions}
+            label={"Функции участников команды"}
+            tooltip={"Опиши ключевые функции каждого участника"}
+            onChange={(value) => handleInputChange("functions", value)}
+          ></TextArea>
+        </div>
+        <div className={styles.column}>
+          <TextArea
+            value={workData.missingSkills}
+            label={"Недостающие навыки"}
+            tooltip={
+              "Пропиши навыки, которых не хватает в команде для реализации проекта "
+            }
+            onChange={(value) => handleInputChange("missingSkills", value)}
+          ></TextArea>
+        </div>
+      </div>
+      {isFormChanged && (
+        <button onClick={submit} className="save_btn">
+          Сохранить изменения
+        </button>
+      )}
+    </>
+  );
 };

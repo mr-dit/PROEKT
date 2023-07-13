@@ -1,0 +1,39 @@
+.form {
+    padding-top: 1.5rem;
+}
+
+.form .input {
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    width: 335px;
+    height: 60px;
+    outline: none;
+    border: none;
+    background: #FAFAFA;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+.loginBtn {
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    width: 335px;
+    height: 60px;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    padding: 18px 0;
+    border-radius: 6px;
+    border: none;
+    background: #B98EFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.loginBtn:hover {
+    background: #8700DA
+}
