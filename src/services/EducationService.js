@@ -1,6 +1,5 @@
 import api from "../http/index";
-// import { AxiosResponse } from "axios";
-// import {AuthResponse} from "../models/response/AuthResponse";
+
 
 export default class EducationService {
 	static async update(_id, directions, plans, partners ) {

@@ -30,7 +30,7 @@ export const ProjectEducationPage = () => {
     const button = document.getElementById("education");
     button.style.backgroundColor = "#F4F4F4";
     button.style.borderRadius = "12px";
-    const span = button.getElementsByTagName("span")[0]
+    const span = button.getElementsByTagName("span")[0];
     span.style.color = "#8700DA";
   }, []);
 
@@ -58,13 +58,13 @@ export const ProjectEducationPage = () => {
     <>
       <MenuProject _id={_id}></MenuProject>
       <div className={styles.mainPage}>
-        <div key={education._id}>
+        <div key={education ? education._id : ""}>
           <Header name={nameProject}></Header>
           <div className={styles.frame}>
             <div className={styles.column1}>
               <div className={styles.row1}>
                 <TextArea
-                  value={education.directions}
+                  value={education ? education.directions : ""}
                   label={"Направления развития проекта"}
                   tooltip={
                     "Опиши, в каком направлении проект будет развиваться?"
@@ -74,7 +74,7 @@ export const ProjectEducationPage = () => {
               </div>
               <div className={styles.row1}>
                 <TextArea
-                  value={education.plans}
+                  value={education ? education.plans : ""}
                   label={"Планы на будущее"}
                   tooltip={
                     "Опиши, как в будущем сможешь увеличить масштаб своего проекта"
@@ -86,7 +86,7 @@ export const ProjectEducationPage = () => {
             <div className={styles.column2}>
               <div className={styles.row1}>
                 <TextArea
-                  value={education.partners}
+                  value={education ? education.partners : ""}
                   label={"Партнеры проекта"}
                   tooltip={
                     "Укажи, кто бы мог стать потенциальным партнером проекта или уже является им "

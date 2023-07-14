@@ -1,8 +1,8 @@
 const {Schema, model} = require('mongoose');
 
 const PromotionSchema = new Schema({
-	promotions: {type: String},
-	content: {type: String},
+	promotions: {type: String, default: ""},
+	content: {type: String, default: ""},
 	project_id: {type: Schema.Types.ObjectId, ref: 'Project'},
 })
 

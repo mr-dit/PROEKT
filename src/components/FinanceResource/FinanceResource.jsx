@@ -49,7 +49,7 @@ export const FinanceResource = ({ _id }) => {
 
   return (
     <>
-      <div key={financeData._id} className={styles.frame}>
+      <div key={financeData ? financeData._id : null} className={styles.frame}>
         <div className={styles.column}>
           <div>
             <label className={styles.label} htmlFor="standard-select">
@@ -77,13 +77,13 @@ export const FinanceResource = ({ _id }) => {
             </div>
           </div>
           <TextArea
-            value={financeData.fixedCosts}
+            value={financeData ? financeData.fixedCosts : ""}
             label="Постоянные затраты"
             tooltip={"Какие траты будут производиться каждый месяц ? "}
             onChange={(value) => handleInputChange("fixedCosts", value)}
           ></TextArea>
           <TextArea
-            value={financeData.variableCosts}
+            value={financeData ? financeData.variableCosts : ""}
             label="Переменные затраты"
             tooltip={"Опиши траты, которые будут варьироваться "}
             onChange={(value) => handleInputChange("variableCosts", value)}
@@ -91,7 +91,7 @@ export const FinanceResource = ({ _id }) => {
         </div>
         <div className={styles.column}>
           <TextArea
-            value={financeData.unexpectedExpenses}
+            value={financeData ? financeData.unexpectedExpenses : ""}
             label="Непредвиденные расходы"
             tooltip={
               "Предположи, какие траты могут возникнуть по непредвиденным обстоятельствам"
@@ -101,10 +101,10 @@ export const FinanceResource = ({ _id }) => {
         </div>
       </div>
       {isFormChanged && (
-            <button onClick={submit} className="save_btn">
-              Сохранить изменения
-            </button>
-          )}
+        <button onClick={submit} className="save_btn">
+          Сохранить изменения
+        </button>
+      )}
     </>
   );
 };

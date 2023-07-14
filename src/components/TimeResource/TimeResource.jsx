@@ -39,16 +39,16 @@ export const TimeResource = ({ _id }) => {
 
   return (
     <>
-      <div key={timeData._id} className={styles.frame}>
+      <div key={timeData ? timeData._id : null} className={styles.frame}>
         <div className={styles.column}>
           <TextArea
-            value={timeData.list}
+            value={timeData ? timeData.list : ""}
             label={"Список задач"}
             tooltip={"Напиши план работы на время реализации проекта "}
             onChange={(value) => handleInputChange("list", value)}
           ></TextArea>
           <TextArea
-            value={timeData.time}
+            value={timeData ? timeData.time : ""}
             label={"Время реализации"}
             tooltip={
               "Сколько займет каждый этап? Совет: ставь дедлайны, так твой проект быстрее реализуется"
@@ -58,7 +58,7 @@ export const TimeResource = ({ _id }) => {
         </div>
         <div className={styles.column}>
           <TextArea
-            value={timeData.events}
+            value={timeData ? timeData.events : ""}
             label={"Мероприятия"}
             tooltip={
               "Какие мероприятия, связанные с проектом ты планируешь? Обозначь даты "

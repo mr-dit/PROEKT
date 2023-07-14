@@ -75,7 +75,7 @@ export const ProjectPromotionPage = () => {
     <>
       <MenuProject _id={_id}></MenuProject>
       <div className={styles.mainPage}>
-        <div key={promotion._id}>
+        <div key={promotion ? promotion._id : null}>
           <Header name={nameProject}></Header>
           <div className={styles.frame}>
             <div className={styles.column1}>
@@ -98,7 +98,7 @@ export const ProjectPromotionPage = () => {
             <div className={styles.column2}>
               <div className={styles.row1}>
                 <TextArea
-                  value={promotion.content}
+                  value={promotion ? promotion.content : ""}
                   label={"Контент план"}
                   tooltip={
                     "Если ты выбрал продвижение в социальных сетях, то тебе понадобится контент-план. Пиши идеи для постов, статей, видео прямо здесь. Упоминай даты выхода каждого поста"

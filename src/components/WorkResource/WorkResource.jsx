@@ -46,22 +46,22 @@ export const WorkResource = ({ _id }) => {
 
   return (
     <>
-      <div key={workData._id} className={styles.frame}>
+      <div key={workData ? workData._id : null} className={styles.frame}>
         <div className={styles.column}>
           <TextArea
-            value={workData.members}
+            value={workData ? workData.members : ""}
             label={"Список участников"}
             tooltip={"Перечисли специалистов проекта"}
             onChange={(value) => handleInputChange("members", value)}
           ></TextArea>
           <TextArea
-            value={workData.roles}
+            value={workData ? workData.roles : ""}
             label={"Роли участников команды"}
             tooltip={"Какие роли в команде они будут занимать?"}
             onChange={(value) => handleInputChange("roles", value)}
           ></TextArea>
           <TextArea
-            value={workData.functions}
+            value={workData ? workData.functions : ""}
             label={"Функции участников команды"}
             tooltip={"Опиши ключевые функции каждого участника"}
             onChange={(value) => handleInputChange("functions", value)}
@@ -69,7 +69,7 @@ export const WorkResource = ({ _id }) => {
         </div>
         <div className={styles.column}>
           <TextArea
-            value={workData.missingSkills}
+            value={workData ? workData.missingSkills : ""}
             label={"Недостающие навыки"}
             tooltip={
               "Пропиши навыки, которых не хватает в команде для реализации проекта "

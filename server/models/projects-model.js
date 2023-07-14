@@ -1,11 +1,11 @@
 const {Schema, model} = require('mongoose');
 
 const ProjectSchema = new Schema({
-	name: {type: String},
-	iconPath: {type: String},
-	coverPath: {type: String},
-	type: {type: String},
-	description: {type: String},
+	name: {type: String, default: ""},
+	iconPath: {type: String, default: ""},
+	coverPath: {type: String, default: ""},
+	type: {type: String, default: ""},
+	description: {type: String, default: ""},
 	user_id: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
